@@ -213,8 +213,11 @@ export default function AnalyticsPage() {
 
   const tierDist = useMemo<TierBucket[]>(() => {
     const raw = overview?.tier_distribution ?? []
+    const rawList: TierBucket[] = Array.isArray(raw)
+      ? raw
+      : Object.entries(raw as unknown as Record<string, number>).map(([tier, count]) => ({ tier, count }))
     const byTier = new Map<string, number>()
-    for (const b of raw) byTier.set((b.tier ?? '').toLowerCase(), num(b.count))
+    for (const b of rawList) byTier.set((b.tier ?? '').toLowerCase(), num(b.count))
     const ordered = TIER_ORDER.map((t) => ({ tier: t, count: byTier.get(t) ?? 0 }))
     // include any extra tiers not in the standard order
     for (const [t, c] of byTier) {
