@@ -232,8 +232,8 @@ export default function OnboardingPage() {
     <div className="mx-auto max-w-4xl space-y-8 px-1 py-2">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-2xl font-bold text-slate-100">Getting started</h1>
-          <p className="text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">Getting started</h1>
+          <p className="text-sm text-stone-400">
             A guided checklist to stand up your EU AI Act compliance workflow end to end.
           </p>
         </div>
@@ -257,11 +257,11 @@ export default function OnboardingPage() {
         <CardBody className="space-y-4">
           <div className="flex items-end justify-between">
             <div>
-              <div className="text-xs font-medium uppercase tracking-wide text-slate-500">Overall progress</div>
-              <div className="mt-1 text-3xl font-bold text-indigo-300">
+              <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Overall progress</div>
+              <div className="mt-1 text-3xl font-bold text-rose-300">
                 {pct}%
               </div>
-              <div className="text-xs text-slate-400">
+              <div className="text-xs text-stone-400">
                 {completedCount} of {total} steps complete
               </div>
             </div>
@@ -273,9 +273,9 @@ export default function OnboardingPage() {
               </Button>
             )}
           </div>
-          <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
+          <div className="h-3 w-full overflow-hidden rounded-full bg-stone-800">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-amber-400 transition-all duration-500"
+              className="h-full rounded-full bg-gradient-to-r from-rose-500 to-amber-400 transition-all duration-500"
               style={{ width: `${pct}%` }}
             />
           </div>
@@ -283,9 +283,9 @@ export default function OnboardingPage() {
       </Card>
 
       {dismissed && (
-        <div className="rounded-lg border border-slate-800 bg-slate-950/40 px-4 py-3 text-sm text-slate-400">
+        <div className="rounded-lg border border-stone-800 bg-stone-950/40 px-4 py-3 text-sm text-stone-400">
           You dismissed the onboarding checklist.{' '}
-          <button onClick={() => setDismissedState(false)} className="text-indigo-300 underline-offset-2 hover:underline">
+          <button onClick={() => setDismissedState(false)} className="text-rose-300 underline-offset-2 hover:underline">
             Restore it
           </button>
           .
@@ -295,8 +295,8 @@ export default function OnboardingPage() {
       {/* Checklist */}
       <Card>
         <CardHeader>
-          <h2 className="text-base font-semibold text-slate-100">Setup checklist</h2>
-          <p className="mt-0.5 text-xs text-slate-400">
+          <h2 className="text-base font-semibold text-stone-100">Setup checklist</h2>
+          <p className="mt-0.5 text-xs text-stone-400">
             Steps auto-detect from your portfolio where possible. You can also tick them manually.
           </p>
         </CardHeader>
@@ -308,7 +308,7 @@ export default function OnboardingPage() {
               <div
                 key={def.key}
                 className={`flex flex-col gap-3 rounded-lg border px-4 py-3.5 transition-colors sm:flex-row sm:items-center ${
-                  isDone ? 'border-emerald-500/30 bg-emerald-500/[0.06]' : 'border-slate-800 bg-slate-950/40'
+                  isDone ? 'border-green-500/30 bg-green-500/[0.06]' : 'border-stone-800 bg-stone-950/40'
                 }`}
               >
                 <button
@@ -318,21 +318,21 @@ export default function OnboardingPage() {
                   aria-label={isDone ? 'Mark incomplete' : 'Mark complete'}
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-sm font-bold transition-colors ${
                     isDone
-                      ? 'border-emerald-500 bg-emerald-500 text-slate-950'
-                      : 'border-slate-600 text-transparent hover:border-indigo-400'
+                      ? 'border-green-500 bg-green-500 text-stone-950'
+                      : 'border-stone-600 text-transparent hover:border-rose-400'
                   }`}
                 >
                   ✓
                 </button>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs text-slate-500">{i + 1}.</span>
-                    <span className={`text-sm font-medium ${isDone ? 'text-slate-300 line-through' : 'text-slate-100'}`}>
+                    <span className="text-xs text-stone-500">{i + 1}.</span>
+                    <span className={`text-sm font-medium ${isDone ? 'text-stone-300 line-through' : 'text-stone-100'}`}>
                       {def.title}
                     </span>
                     {autoDetected && <Badge tone="indigo">Detected</Badge>}
                   </div>
-                  <p className="mt-0.5 text-xs text-slate-400">{def.description}</p>
+                  <p className="mt-0.5 text-xs text-stone-400">{def.description}</p>
                 </div>
                 <div className="shrink-0">
                   <Link href={def.href}>
@@ -346,7 +346,7 @@ export default function OnboardingPage() {
       </Card>
 
       {pct === 100 && (
-        <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4 text-sm text-emerald-200">
+        <div className="rounded-xl border border-green-500/30 bg-green-500/10 px-5 py-4 text-sm text-green-200">
           Your compliance desk is fully set up. Head to the{' '}
           <Link href="/dashboard" className="font-medium underline-offset-2 hover:underline">dashboard</Link>{' '}
           for your portfolio overview.

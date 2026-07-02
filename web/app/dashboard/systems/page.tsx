@@ -261,7 +261,7 @@ export default function SystemsPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">AI System Register</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             {visible.length} system{visible.length === 1 ? '' : 's'}
             {hasActiveFilters ? ' (filtered)' : ''}
           </p>
@@ -297,12 +297,12 @@ export default function SystemsPage() {
                   value={q}
                   onChange={(e) => setQ(e.target.value)}
                   placeholder="Search name or purpose..."
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none lg:col-span-2"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none lg:col-span-2"
                 />
                 <select
                   value={tier}
                   onChange={(e) => setTier(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
                 >
                   <option value="">All tiers</option>
                   {TIERS.map((t) => (
@@ -314,7 +314,7 @@ export default function SystemsPage() {
                 <select
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
                 >
                   <option value="">All statuses</option>
                   {STATUSES.map((s) => (
@@ -326,7 +326,7 @@ export default function SystemsPage() {
                 <select
                   value={tag}
                   onChange={(e) => setTag(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
                 >
                   <option value="">All tags</option>
                   {tags.map((t) => (
@@ -338,12 +338,12 @@ export default function SystemsPage() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                <label className="flex items-center gap-2 text-sm text-slate-300">
+                <label className="flex items-center gap-2 text-sm text-stone-300">
                   <input
                     type="checkbox"
                     checked={showArchived}
                     onChange={(e) => setShowArchived(e.target.checked)}
-                    className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-indigo-500"
+                    className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-rose-500"
                   />
                   Show archived
                 </label>
@@ -359,21 +359,21 @@ export default function SystemsPage() {
               </div>
 
               {filters.length > 0 && (
-                <div className="flex flex-wrap items-center gap-2 border-t border-slate-800 pt-3">
-                  <span className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                <div className="flex flex-wrap items-center gap-2 border-t border-stone-800 pt-3">
+                  <span className="text-xs font-medium uppercase tracking-wide text-stone-500">
                     Saved
                   </span>
                   {filters.map((f) => (
                     <span
                       key={f.id}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-800/60 py-0.5 pl-3 pr-1.5 text-xs text-slate-200"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-stone-700 bg-stone-800/60 py-0.5 pl-3 pr-1.5 text-xs text-stone-200"
                     >
-                      <button onClick={() => applySavedFilter(f)} className="hover:text-indigo-300">
+                      <button onClick={() => applySavedFilter(f)} className="hover:text-rose-300">
                         {f.name}
                       </button>
                       <button
                         onClick={() => removeFilter(f.id)}
-                        className="text-slate-500 hover:text-red-400"
+                        className="text-stone-500 hover:text-red-400"
                         aria-label={`Delete ${f.name}`}
                       >
                         ✕
@@ -393,14 +393,14 @@ export default function SystemsPage() {
 
           {/* Bulk action bar */}
           {selected.size > 0 && (
-            <Card className="border-indigo-500/40">
+            <Card className="border-rose-500/40">
               <CardBody className="flex flex-wrap items-center gap-3">
-                <span className="text-sm font-medium text-indigo-300">{selected.size} selected</span>
+                <span className="text-sm font-medium text-rose-300">{selected.size} selected</span>
                 <div className="flex-1" />
                 <select
                   value={bulkStatus}
                   onChange={(e) => setBulkStatus(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
                 >
                   <option value="">Set status...</option>
                   {STATUSES.map((s) => (
@@ -413,7 +413,7 @@ export default function SystemsPage() {
                   value={bulkOwner}
                   onChange={(e) => setBulkOwner(e.target.value)}
                   placeholder="Owner..."
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none"
                 />
                 <Button variant="secondary" onClick={applyBulkPatch} disabled={busy}>
                   Apply
@@ -468,7 +468,7 @@ export default function SystemsPage() {
                       type="checkbox"
                       checked={allVisibleSelected}
                       onChange={toggleAll}
-                      className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-indigo-500"
+                      className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-rose-500"
                       aria-label="Select all"
                     />
                   </TH>
@@ -483,20 +483,20 @@ export default function SystemsPage() {
               </THead>
               <TBody>
                 {visible.map((sys) => (
-                  <TR key={sys.id} className={selected.has(sys.id) ? 'bg-indigo-500/5' : ''}>
+                  <TR key={sys.id} className={selected.has(sys.id) ? 'bg-rose-500/5' : ''}>
                     <TD>
                       <input
                         type="checkbox"
                         checked={selected.has(sys.id)}
                         onChange={() => toggleOne(sys.id)}
-                        className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-indigo-500"
+                        className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-rose-500"
                         aria-label={`Select ${sys.name}`}
                       />
                     </TD>
                     <TD>
                       <Link
                         href={`/dashboard/systems/${sys.id}`}
-                        className="font-medium text-slate-100 hover:text-indigo-300"
+                        className="font-medium text-stone-100 hover:text-rose-300"
                       >
                         {sys.name}
                       </Link>
@@ -506,14 +506,14 @@ export default function SystemsPage() {
                         {sys.archived && <Badge tone="slate">Archived</Badge>}
                       </div>
                     </TD>
-                    <TD className="capitalize text-slate-300">{sys.role?.replace(/_/g, ' ')}</TD>
+                    <TD className="capitalize text-stone-300">{sys.role?.replace(/_/g, ' ')}</TD>
                     <TD>
                       {sys.current_tier ? (
                         <Badge tone={tierTone(sys.current_tier)}>
                           {TIER_LABEL[sys.current_tier] || sys.current_tier}
                         </Badge>
                       ) : (
-                        <span className="text-xs text-slate-500">unclassified</span>
+                        <span className="text-xs text-stone-500">unclassified</span>
                       )}
                     </TD>
                     <TD>
@@ -527,16 +527,16 @@ export default function SystemsPage() {
                           </Badge>
                         ))}
                         {(sys.tags?.length ?? 0) > 3 && (
-                          <span className="text-xs text-slate-500">+{(sys.tags?.length ?? 0) - 3}</span>
+                          <span className="text-xs text-stone-500">+{(sys.tags?.length ?? 0) - 3}</span>
                         )}
                       </div>
                     </TD>
-                    <TD className="text-xs text-slate-500">{fmtDate(sys.updated_at)}</TD>
+                    <TD className="text-xs text-stone-500">{fmtDate(sys.updated_at)}</TD>
                     <TD className="text-right">
                       <div className="flex items-center justify-end gap-1.5">
                         <Link
                           href={`/dashboard/systems/${sys.id}/classify`}
-                          className="text-xs font-medium text-indigo-400 hover:text-indigo-300"
+                          className="text-xs font-medium text-rose-400 hover:text-rose-300"
                         >
                           Classify
                         </Link>
@@ -550,7 +550,7 @@ export default function SystemsPage() {
                               setActionError(e instanceof Error ? e.message : 'Action failed.')
                             }
                           }}
-                          className="text-xs font-medium text-slate-400 hover:text-amber-300"
+                          className="text-xs font-medium text-stone-400 hover:text-amber-300"
                         >
                           {sys.archived ? 'Restore' : 'Archive'}
                         </button>
@@ -580,17 +580,17 @@ export default function SystemsPage() {
           </>
         }
       >
-        <label className="block text-sm text-slate-300">
+        <label className="block text-sm text-stone-300">
           Filter name
           <input
             value={filterName}
             onChange={(e) => setFilterName(e.target.value)}
             placeholder="e.g. High-risk in review"
-            className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none"
             autoFocus
           />
         </label>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-stone-500">
           Captures the active tier, status, tag, search, and archived toggle.
         </p>
       </Modal>

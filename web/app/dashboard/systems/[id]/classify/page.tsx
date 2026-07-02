@@ -147,16 +147,16 @@ export default function ClassifyPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <div className="mb-1 text-xs text-slate-500">
-            <Link href="/dashboard/systems" className="hover:text-indigo-300">AI Systems</Link>
+          <div className="mb-1 text-xs text-stone-500">
+            <Link href="/dashboard/systems" className="hover:text-rose-300">AI Systems</Link>
             <span className="px-1.5">/</span>
-            <Link href={`/dashboard/systems/${id}`} className="hover:text-indigo-300">Detail</Link>
+            <Link href={`/dashboard/systems/${id}`} className="hover:text-rose-300">Detail</Link>
             <span className="px-1.5">/</span>
-            <span className="text-slate-400">Classify</span>
+            <span className="text-stone-400">Classify</span>
           </div>
-          <h1 className="text-2xl font-bold text-slate-100">Risk classifier</h1>
-          <p className="mt-1 text-sm text-slate-400">
-            Deterministic EU AI Act engine — ruleset <span className="font-mono text-indigo-300">{questionnaire?.ruleset_version || 'n/a'}</span>. Answers walk Article 5, Annex III, Article 6(3) and Article 50.
+          <h1 className="text-2xl font-bold text-stone-100">Risk classifier</h1>
+          <p className="mt-1 text-sm text-stone-400">
+            Deterministic EU AI Act engine — ruleset <span className="font-mono text-rose-300">{questionnaire?.ruleset_version || 'n/a'}</span>. Answers walk Article 5, Annex III, Article 6(3) and Article 50.
           </p>
         </div>
         <div className="flex gap-2">
@@ -174,7 +174,7 @@ export default function ClassifyPage() {
         <div className="lg:col-span-3">
           <Card>
             <CardHeader className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-slate-200">Questionnaire ({questions.length})</span>
+              <span className="text-sm font-semibold text-stone-200">Questionnaire ({questions.length})</span>
               <Button onClick={run} disabled={running || questions.length === 0}>{running ? 'Running...' : 'Run classifier'}</Button>
             </CardHeader>
             <CardBody className="space-y-5">
@@ -185,13 +185,13 @@ export default function ClassifyPage() {
                   const k = keyOf(q, i)
                   const opts = options(q)
                   return (
-                    <div key={k} className="border-b border-slate-800/60 pb-4 last:border-0 last:pb-0">
+                    <div key={k} className="border-b border-stone-800/60 pb-4 last:border-0 last:pb-0">
                       <div className="mb-2 flex items-start gap-2">
-                        <span className="mt-0.5 text-xs font-mono text-slate-600">{i + 1}.</span>
+                        <span className="mt-0.5 text-xs font-mono text-stone-600">{i + 1}.</span>
                         <div>
-                          <div className="text-sm font-medium text-slate-100">{q.question || q.text || q.label || k}</div>
-                          {q.article_ref && <div className="text-xs text-slate-500">{q.article_ref}</div>}
-                          {q.help && <div className="mt-0.5 text-xs text-slate-500">{q.help}</div>}
+                          <div className="text-sm font-medium text-stone-100">{q.question || q.text || q.label || k}</div>
+                          {q.article_ref && <div className="text-xs text-stone-500">{q.article_ref}</div>}
+                          {q.help && <div className="mt-0.5 text-xs text-stone-500">{q.help}</div>}
                         </div>
                       </div>
                       <div className="ml-6">
@@ -205,8 +205,8 @@ export default function ClassifyPage() {
                                   onClick={() => setAnswer(k, o.value)}
                                   className={`rounded-lg border px-3 py-1.5 text-sm transition-colors ${
                                     active
-                                      ? 'border-indigo-500 bg-indigo-500/20 text-indigo-200'
-                                      : 'border-slate-700 bg-slate-900 text-slate-300 hover:border-slate-600'
+                                      ? 'border-rose-500 bg-rose-500/20 text-rose-200'
+                                      : 'border-stone-700 bg-stone-900 text-stone-300 hover:border-stone-600'
                                   }`}
                                 >
                                   {o.label}
@@ -234,27 +234,27 @@ export default function ClassifyPage() {
         {/* Result + history */}
         <div className="space-y-4 lg:col-span-2">
           <Card>
-            <CardHeader><span className="text-sm font-semibold text-slate-200">Current result</span></CardHeader>
+            <CardHeader><span className="text-sm font-semibold text-stone-200">Current result</span></CardHeader>
             <CardBody className="space-y-3">
               {!classification ? (
-                <p className="text-sm text-slate-500">No classification yet. Answer the questionnaire and run the classifier.</p>
+                <p className="text-sm text-stone-500">No classification yet. Answer the questionnaire and run the classifier.</p>
               ) : (
                 <>
                   <div className="flex items-center gap-2">
-                    <span className="text-3xl font-bold text-slate-100 capitalize">{classification.tier}</span>
+                    <span className="text-3xl font-bold text-stone-100 capitalize">{classification.tier}</span>
                     <Badge tone={tierTone(classification.tier)}>{classification.tier} risk</Badge>
                     {classification.is_override && <Badge tone="amber">Override</Badge>}
                   </div>
-                  <div className="text-xs text-slate-500">
+                  <div className="text-xs text-stone-500">
                     Ruleset {classification.ruleset_version} · coverage {pct(classification.coverage_pct)}% · {fmtDate(classification.created_at)}
                   </div>
                   {classification.is_override && classification.override_justification && (
                     <p className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">{classification.override_justification}</p>
                   )}
                   {Array.isArray(classification.rationale) && classification.rationale.length > 0 && (
-                    <ul className="space-y-1 text-sm text-slate-300">
+                    <ul className="space-y-1 text-sm text-stone-300">
                       {classification.rationale.map((r: any, i: number) => (
-                        <li key={i} className="flex gap-2"><span className="text-indigo-400">▸</span><span>{typeof r === 'string' ? r : r.text || JSON.stringify(r)}</span></li>
+                        <li key={i} className="flex gap-2"><span className="text-rose-400">▸</span><span>{typeof r === 'string' ? r : r.text || JSON.stringify(r)}</span></li>
                       ))}
                     </ul>
                   )}
@@ -264,20 +264,20 @@ export default function ClassifyPage() {
           </Card>
 
           <Card>
-            <CardHeader><span className="text-sm font-semibold text-slate-200">History ({history.length})</span></CardHeader>
+            <CardHeader><span className="text-sm font-semibold text-stone-200">History ({history.length})</span></CardHeader>
             <CardBody className="p-0">
               {history.length === 0 ? (
-                <p className="px-5 py-6 text-sm text-slate-500">No prior classifications.</p>
+                <p className="px-5 py-6 text-sm text-stone-500">No prior classifications.</p>
               ) : (
-                <ol className="divide-y divide-slate-800">
+                <ol className="divide-y divide-stone-800">
                   {history.map((h, i) => (
                     <li key={h.id ?? i} className="flex items-center justify-between px-5 py-3">
                       <div className="flex items-center gap-2">
                         <Badge tone={tierTone(h.tier)}>{h.tier}</Badge>
                         {h.is_override && <Badge tone="amber">override</Badge>}
-                        <span className="text-xs text-slate-500">{pct(h.coverage_pct)}%</span>
+                        <span className="text-xs text-stone-500">{pct(h.coverage_pct)}%</span>
                       </div>
-                      <span className="text-xs text-slate-500">{fmtDate(h.created_at)}</span>
+                      <span className="text-xs text-stone-500">{fmtDate(h.created_at)}</span>
                     </li>
                   ))}
                 </ol>
@@ -289,10 +289,10 @@ export default function ClassifyPage() {
 
       {/* Rule hits */}
       <Card>
-        <CardHeader><span className="text-sm font-semibold text-slate-200">Cited rule hits ({ruleHits.length})</span></CardHeader>
+        <CardHeader><span className="text-sm font-semibold text-stone-200">Cited rule hits ({ruleHits.length})</span></CardHeader>
         <CardBody className="p-0">
           {ruleHits.length === 0 ? (
-            <p className="px-5 py-6 text-sm text-slate-500">Run the classifier to see which articles were triggered.</p>
+            <p className="px-5 py-6 text-sm text-stone-500">Run the classifier to see which articles were triggered.</p>
           ) : (
             <Table>
               <THead>
@@ -301,11 +301,11 @@ export default function ClassifyPage() {
               <TBody>
                 {ruleHits.map((h, i) => (
                   <TR key={h.id ?? i}>
-                    <TD className="font-mono text-xs text-indigo-300">{h.rule_code}</TD>
-                    <TD className="text-xs text-slate-400">{h.article_ref}</TD>
-                    <TD className="text-slate-200">{h.question}</TD>
-                    <TD className="text-sm text-slate-300">{String(h.answer)}</TD>
-                    <TD>{h.contributes_to_tier ? <Badge tone={tierTone(h.contributes_to_tier)}>{h.contributes_to_tier}</Badge> : <span className="text-xs text-slate-600">—</span>}</TD>
+                    <TD className="font-mono text-xs text-rose-300">{h.rule_code}</TD>
+                    <TD className="text-xs text-stone-400">{h.article_ref}</TD>
+                    <TD className="text-stone-200">{h.question}</TD>
+                    <TD className="text-sm text-stone-300">{String(h.answer)}</TD>
+                    <TD>{h.contributes_to_tier ? <Badge tone={tierTone(h.contributes_to_tier)}>{h.contributes_to_tier}</Badge> : <span className="text-xs text-stone-600">—</span>}</TD>
                   </TR>
                 ))}
               </TBody>
@@ -327,16 +327,16 @@ export default function ClassifyPage() {
         }
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-400">A manual override supersedes the deterministic result. A documented justification is required for audit.</p>
+          <p className="text-sm text-stone-400">A manual override supersedes the deterministic result. A documented justification is required for audit.</p>
           <label className="block">
-            <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Tier</span>
+            <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Tier</span>
             <div className="flex flex-wrap gap-2">
               {TIERS.map((t) => (
                 <button
                   key={t}
                   onClick={() => setOverrideTier(t)}
                   className={`rounded-lg border px-3 py-1.5 text-sm capitalize transition-colors ${
-                    overrideTier === t ? 'border-indigo-500 bg-indigo-500/20 text-indigo-200' : 'border-slate-700 bg-slate-900 text-slate-300 hover:border-slate-600'
+                    overrideTier === t ? 'border-rose-500 bg-rose-500/20 text-rose-200' : 'border-stone-700 bg-stone-900 text-stone-300 hover:border-stone-600'
                   }`}
                 >
                   {t}
@@ -345,7 +345,7 @@ export default function ClassifyPage() {
             </div>
           </label>
           <label className="block">
-            <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Justification</span>
+            <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Justification</span>
             <textarea
               className={inputCls}
               rows={4}
@@ -361,4 +361,4 @@ export default function ClassifyPage() {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500'
+  'w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500'

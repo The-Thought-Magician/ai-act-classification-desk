@@ -64,9 +64,9 @@ const GEOGRAPHIES = [
   'Iceland', 'Liechtenstein', 'Norway', 'Non-EU',
 ]
 
-const labelCls = 'block text-sm font-medium text-slate-300'
+const labelCls = 'block text-sm font-medium text-stone-300'
 const inputCls =
-  'mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none'
+  'mt-1 w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none'
 
 export default function NewSystemPage() {
   const router = useRouter()
@@ -145,11 +145,11 @@ export default function NewSystemPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-6">
       <div>
-        <Link href="/dashboard/systems" className="text-xs text-slate-500 hover:text-slate-300">
+        <Link href="/dashboard/systems" className="text-xs text-stone-500 hover:text-stone-300">
           ← Back to register
         </Link>
         <h1 className="mt-1 text-2xl font-bold text-white">Register an AI System</h1>
-        <p className="mt-1 text-sm text-slate-400">
+        <p className="mt-1 text-sm text-stone-400">
           Capture the intake record. After saving you will run the deterministic classifier to derive
           the risk tier, obligations, and evidence requirements.
         </p>
@@ -165,7 +165,7 @@ export default function NewSystemPage() {
         {/* Identity */}
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Identity</h2>
+            <h2 className="text-sm font-semibold text-stone-200">Identity</h2>
           </CardHeader>
           <CardBody className="space-y-4">
             <div>
@@ -213,7 +213,7 @@ export default function NewSystemPage() {
         {/* Classification context */}
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Classification Context</h2>
+            <h2 className="text-sm font-semibold text-stone-200">Classification Context</h2>
           </CardHeader>
           <CardBody className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
@@ -282,35 +282,35 @@ export default function NewSystemPage() {
               </div>
             </div>
 
-            <div className="space-y-2 rounded-lg border border-slate-800 bg-slate-900/40 p-3">
-              <label className="flex items-center gap-2 text-sm text-slate-300">
+            <div className="space-y-2 rounded-lg border border-stone-800 bg-stone-900/40 p-3">
+              <label className="flex items-center gap-2 text-sm text-stone-300">
                 <input
                   type="checkbox"
                   checked={placedOnEuMarket}
                   onChange={(e) => setPlacedOnEuMarket(e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-indigo-500"
+                  className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-rose-500"
                 />
                 Placed on the EU market or put into service in the EU
               </label>
-              <label className="flex items-center gap-2 text-sm text-slate-300">
+              <label className="flex items-center gap-2 text-sm text-stone-300">
                 <input
                   type="checkbox"
                   checked={isGpai}
                   onChange={(e) => setIsGpai(e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-indigo-500"
+                  className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-rose-500"
                 />
                 General-purpose AI (GPAI) model
               </label>
-              <label className="flex items-center gap-2 text-sm text-slate-300">
+              <label className="flex items-center gap-2 text-sm text-stone-300">
                 <input
                   type="checkbox"
                   checked={isSystemicRisk}
                   onChange={(e) => setIsSystemicRisk(e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-indigo-500"
+                  className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-rose-500"
                   disabled={!isGpai}
                 />
                 Systemic-risk GPAI (Art 51)
-                {!isGpai && <span className="text-xs text-slate-500">— GPAI only</span>}
+                {!isGpai && <span className="text-xs text-stone-500">— GPAI only</span>}
               </label>
             </div>
           </CardBody>
@@ -319,8 +319,8 @@ export default function NewSystemPage() {
         {/* Geographies */}
         <Card>
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">Deployment Geography</h2>
-            <span className="text-xs text-slate-500">{geographies.length} selected</span>
+            <h2 className="text-sm font-semibold text-stone-200">Deployment Geography</h2>
+            <span className="text-xs text-stone-500">{geographies.length} selected</span>
           </CardHeader>
           <CardBody>
             <div className="flex flex-wrap gap-2">
@@ -333,8 +333,8 @@ export default function NewSystemPage() {
                     onClick={() => toggleGeography(g)}
                     className={`rounded-full border px-3 py-1 text-xs transition-colors ${
                       on
-                        ? 'border-indigo-500/40 bg-indigo-500/15 text-indigo-300'
-                        : 'border-slate-700 bg-slate-800/50 text-slate-400 hover:text-slate-200'
+                        ? 'border-rose-500/40 bg-rose-500/15 text-rose-300'
+                        : 'border-stone-700 bg-stone-800/50 text-stone-400 hover:text-stone-200'
                     }`}
                   >
                     {g}
@@ -348,13 +348,13 @@ export default function NewSystemPage() {
         {/* Tags */}
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Tags</h2>
+            <h2 className="text-sm font-semibold text-stone-200">Tags</h2>
           </CardHeader>
           <CardBody>
             {tags.length === 0 ? (
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-stone-500">
                 No tags yet. Create them under{' '}
-                <Link href="/dashboard/tags" className="text-indigo-400 hover:text-indigo-300">
+                <Link href="/dashboard/tags" className="text-rose-400 hover:text-rose-300">
                   Tags &amp; Filters
                 </Link>
                 .

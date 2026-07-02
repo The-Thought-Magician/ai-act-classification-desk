@@ -164,8 +164,8 @@ export default function RolesPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Role Changes</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">Role Changes</h1>
+          <p className="mt-1 text-sm text-stone-400">
             Track substantial modifications, rebrands, and purpose changes that may flip your
             operator role and re-trigger obligations under the EU AI Act.
           </p>
@@ -194,18 +194,18 @@ export default function RolesPage() {
       <Card>
         <CardHeader>
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">Role-change log</h2>
+            <h2 className="text-sm font-semibold text-stone-200">Role-change log</h2>
             <div className="flex flex-wrap items-center gap-2">
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search events..."
-                className="w-44 rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none"
+                className="w-44 rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-500 focus:border-rose-500 focus:outline-none"
               />
               <select
                 value={systemFilter}
                 onChange={(e) => setSystemFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-200 focus:border-indigo-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-1.5 text-sm text-stone-200 focus:border-rose-500 focus:outline-none"
               >
                 <option value="">All systems</option>
                 {systems.map((s) => (
@@ -215,14 +215,14 @@ export default function RolesPage() {
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-200 focus:border-indigo-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-1.5 text-sm text-stone-200 focus:border-rose-500 focus:outline-none"
               >
                 <option value="">All types</option>
                 {EVENT_TYPES.map((t) => (
                   <option key={t.code} value={t.code}>{t.label}</option>
                 ))}
               </select>
-              <label className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-300">
+              <label className="flex items-center gap-2 rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-1.5 text-sm text-stone-300">
                 <input
                   type="checkbox"
                   checked={flippedOnly}
@@ -269,28 +269,28 @@ export default function RolesPage() {
                   return (
                     <TR key={e.id}>
                       <TD>
-                        <div className="font-medium text-slate-100">{sys?.name ?? 'Unknown system'}</div>
+                        <div className="font-medium text-stone-100">{sys?.name ?? 'Unknown system'}</div>
                         {sys?.current_tier && (
                           <Badge tone={tierTone(sys.current_tier)} className="mt-1">{sys.current_tier}</Badge>
                         )}
                       </TD>
                       <TD>
                         <div className="flex items-center gap-2">
-                          <span className="text-slate-200">{fmtEventType(e.event_type)}</span>
+                          <span className="text-stone-200">{fmtEventType(e.event_type)}</span>
                           {e.flipped && <Badge tone="amber">Role flipped</Badge>}
                         </div>
                       </TD>
                       <TD>
                         <div className="flex items-center gap-2 text-sm">
                           <Badge tone="slate">{fmtRole(e.before_role)}</Badge>
-                          <span className="text-slate-500">→</span>
+                          <span className="text-stone-500">→</span>
                           <Badge tone={e.flipped ? 'amber' : 'indigo'}>{fmtRole(e.after_role)}</Badge>
                         </div>
                       </TD>
                       <TD className="max-w-xs">
-                        <span className="text-slate-400">{e.description || '—'}</span>
+                        <span className="text-stone-400">{e.description || '—'}</span>
                       </TD>
-                      <TD className="whitespace-nowrap text-slate-400">{fmtDate(e.created_at)}</TD>
+                      <TD className="whitespace-nowrap text-stone-400">{fmtDate(e.created_at)}</TD>
                     </TR>
                   )
                 })}
@@ -316,28 +316,28 @@ export default function RolesPage() {
             <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formErr}</div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">System</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">System</label>
             <select
               value={form.system_id}
               onChange={(e) => onPickSystem(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-rose-500 focus:outline-none"
             >
               {systems.map((s) => (
                 <option key={s.id} value={s.id}>{s.name}</option>
               ))}
             </select>
             {selectedSystem && (
-              <p className="mt-1 text-xs text-slate-500">
-                Current role: <span className="text-slate-300">{fmtRole(selectedSystem.role)}</span>
+              <p className="mt-1 text-xs text-stone-500">
+                Current role: <span className="text-stone-300">{fmtRole(selectedSystem.role)}</span>
               </p>
             )}
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Event type</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Event type</label>
             <select
               value={form.event_type}
               onChange={(e) => setForm((f) => ({ ...f, event_type: e.target.value }))}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-rose-500 focus:outline-none"
             >
               {EVENT_TYPES.map((t) => (
                 <option key={t.code} value={t.code}>{t.label}</option>
@@ -345,28 +345,28 @@ export default function RolesPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">New effective role</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">New effective role</label>
             <select
               value={form.after_role}
               onChange={(e) => setForm((f) => ({ ...f, after_role: e.target.value }))}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-rose-500 focus:outline-none"
             >
               {ROLES.map((r) => (
                 <option key={r} value={r}>{fmtRole(r)}</option>
               ))}
             </select>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-stone-500">
               Under Art. 25, a substantial modification can make a deployer assume provider obligations.
             </p>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Description</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Description</label>
             <textarea
               value={form.description}
               onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
               rows={3}
               placeholder="What changed and why this may affect the system's role or risk tier..."
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-500 focus:border-rose-500 focus:outline-none"
             />
           </div>
         </div>

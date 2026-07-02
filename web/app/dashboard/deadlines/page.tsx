@@ -199,27 +199,27 @@ export default function DeadlinesPage() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <h2 className="text-sm font-semibold text-slate-200">{meta.title}</h2>
+              <h2 className="text-sm font-semibold text-stone-200">{meta.title}</h2>
               <Badge tone={meta.tone}>{items.length}</Badge>
             </div>
-            <span className="text-xs text-slate-500">{meta.desc}</span>
+            <span className="text-xs text-stone-500">{meta.desc}</span>
           </div>
         </CardHeader>
         <CardBody className="p-0">
           {items.length === 0 ? (
-            <p className="px-5 py-6 text-center text-sm text-slate-500">Nothing here.</p>
+            <p className="px-5 py-6 text-center text-sm text-stone-500">Nothing here.</p>
           ) : (
-            <ul className="divide-y divide-slate-800">
+            <ul className="divide-y divide-stone-800">
               {items.map((d) => (
                 <li key={d.id} className="flex items-center justify-between gap-3 px-5 py-3">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="truncate font-medium text-slate-100">{d.label}</span>
+                      <span className="truncate font-medium text-stone-100">{d.label}</span>
                       <Badge tone={SOURCE_TONE[d.source] ?? 'slate'}>{d.source}</Badge>
                     </div>
-                    <div className="mt-0.5 flex items-center gap-2 text-xs text-slate-400">
+                    <div className="mt-0.5 flex items-center gap-2 text-xs text-stone-400">
                       <span>{fmtDate(d.due_date)}</span>
-                      <span className={key === 'overdue' ? 'text-red-300' : key === 'due_soon' ? 'text-amber-300' : 'text-slate-500'}>
+                      <span className={key === 'overdue' ? 'text-red-300' : key === 'due_soon' ? 'text-amber-300' : 'text-stone-500'}>
                         · {relativeLabel(d.due_date)}
                       </span>
                       {d.status && <Badge tone={statusTone(d.status)}>{d.status}</Badge>}
@@ -235,7 +235,7 @@ export default function DeadlinesPage() {
                       {deletingId === d.id ? '…' : 'Delete'}
                     </Button>
                   ) : (
-                    <span className="shrink-0 text-xs text-slate-600">auto</span>
+                    <span className="shrink-0 text-xs text-stone-600">auto</span>
                   )}
                 </li>
               ))}
@@ -250,23 +250,23 @@ export default function DeadlinesPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Deadlines</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">Deadlines</h1>
+          <p className="mt-1 text-sm text-stone-400">
             Compliance milestones aggregated from obligations, registry submissions, and your own
             custom deadlines.
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex rounded-lg border border-slate-700 bg-slate-950/60 p-0.5">
+          <div className="flex rounded-lg border border-stone-700 bg-stone-950/60 p-0.5">
             <button
               onClick={() => setView('list')}
-              className={`rounded-md px-3 py-1.5 text-sm ${view === 'list' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-slate-200'}`}
+              className={`rounded-md px-3 py-1.5 text-sm ${view === 'list' ? 'bg-rose-600 text-white' : 'text-stone-400 hover:text-stone-200'}`}
             >
               List
             </button>
             <button
               onClick={() => setView('calendar')}
-              className={`rounded-md px-3 py-1.5 text-sm ${view === 'calendar' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-slate-200'}`}
+              className={`rounded-md px-3 py-1.5 text-sm ${view === 'calendar' ? 'bg-rose-600 text-white' : 'text-stone-400 hover:text-stone-200'}`}
             >
               Calendar
             </button>
@@ -306,7 +306,7 @@ export default function DeadlinesPage() {
         <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-200">
+              <h2 className="text-sm font-semibold text-stone-200">
                 {MONTHS[calMonth.getMonth()]} {calMonth.getFullYear()}
               </h2>
               <div className="flex items-center gap-2">
@@ -322,24 +322,24 @@ export default function DeadlinesPage() {
             </div>
           </CardHeader>
           <CardBody>
-            <div className="grid grid-cols-7 gap-px overflow-hidden rounded-lg border border-slate-800 bg-slate-800">
+            <div className="grid grid-cols-7 gap-px overflow-hidden rounded-lg border border-stone-800 bg-stone-800">
               {WEEKDAYS.map((w) => (
-                <div key={w} className="bg-slate-900/80 py-2 text-center text-xs font-semibold uppercase text-slate-500">{w}</div>
+                <div key={w} className="bg-stone-900/80 py-2 text-center text-xs font-semibold uppercase text-stone-500">{w}</div>
               ))}
               {calCells.map((cell, i) => (
                 <div
                   key={i}
-                  className={`min-h-[88px] bg-slate-950/40 p-1.5 ${cell.day === null ? 'opacity-40' : ''}`}
+                  className={`min-h-[88px] bg-stone-950/40 p-1.5 ${cell.day === null ? 'opacity-40' : ''}`}
                 >
                   {cell.day !== null && (
                     <>
-                      <div className={`mb-1 text-right text-xs ${cell.day === todayNum ? 'font-bold text-indigo-300' : 'text-slate-500'}`}>
+                      <div className={`mb-1 text-right text-xs ${cell.day === todayNum ? 'font-bold text-rose-300' : 'text-stone-500'}`}>
                         {cell.day}
                       </div>
                       <div className="space-y-1">
                         {cell.items.slice(0, 3).map((d) => {
                           const n = daysUntil(d.due_date)
-                          const tone = n < 0 ? 'bg-red-500/20 text-red-300' : n <= 30 ? 'bg-amber-500/20 text-amber-300' : 'bg-indigo-500/20 text-indigo-300'
+                          const tone = n < 0 ? 'bg-red-500/20 text-red-300' : n <= 30 ? 'bg-amber-500/20 text-amber-300' : 'bg-rose-500/20 text-rose-300'
                           return (
                             <div key={d.id} className={`truncate rounded px-1.5 py-0.5 text-[11px] ${tone}`} title={`${d.label} (${d.source})`}>
                               {d.label}
@@ -347,7 +347,7 @@ export default function DeadlinesPage() {
                           )
                         })}
                         {cell.items.length > 3 && (
-                          <div className="px-1.5 text-[11px] text-slate-500">+{cell.items.length - 3} more</div>
+                          <div className="px-1.5 text-[11px] text-stone-500">+{cell.items.length - 3} more</div>
                         )}
                       </div>
                     </>
@@ -355,10 +355,10 @@ export default function DeadlinesPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-400">
+            <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-stone-400">
               <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded bg-red-500/60" /> Overdue</span>
               <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded bg-amber-500/60" /> Due soon</span>
-              <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded bg-indigo-500/60" /> Upcoming</span>
+              <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded bg-rose-500/60" /> Upcoming</span>
             </div>
           </CardBody>
         </Card>
@@ -380,21 +380,21 @@ export default function DeadlinesPage() {
             <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formErr}</div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Label</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Label</label>
             <input
               value={form.label}
               onChange={(e) => setForm((f) => ({ ...f, label: e.target.value }))}
               placeholder="e.g. Internal high-risk review board"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-500 focus:border-rose-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Due date</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Due date</label>
             <input
               type="date"
               value={form.due_date}
               onChange={(e) => setForm((f) => ({ ...f, due_date: e.target.value }))}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-rose-500 focus:outline-none"
             />
           </div>
         </div>

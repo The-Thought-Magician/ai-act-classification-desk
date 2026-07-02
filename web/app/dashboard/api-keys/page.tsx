@@ -159,8 +159,8 @@ export default function ApiKeysPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">API Keys &amp; Docs</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">API Keys &amp; Docs</h1>
+          <p className="mt-1 text-sm text-stone-400">
             Programmatic access to your classification register, obligations, and the live EU AI Act ruleset.
           </p>
         </div>
@@ -168,9 +168,9 @@ export default function ApiKeysPage() {
       </div>
 
       {banner && (
-        <div className="flex items-center justify-between rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-sm text-indigo-200">
+        <div className="flex items-center justify-between rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-2 text-sm text-rose-200">
           <span>{banner}</span>
-          <button onClick={() => setBanner(null)} className="text-indigo-300 hover:text-white">✕</button>
+          <button onClick={() => setBanner(null)} className="text-rose-300 hover:text-white">✕</button>
         </div>
       )}
 
@@ -181,7 +181,7 @@ export default function ApiKeysPage() {
         </div>
       )}
 
-      <div className="flex gap-1 border-b border-slate-800">
+      <div className="flex gap-1 border-b border-stone-800">
         {([
           ['keys', 'API Keys'],
           ['docs', 'API Reference'],
@@ -192,8 +192,8 @@ export default function ApiKeysPage() {
             onClick={() => setTab(k)}
             className={`px-4 py-2 text-sm font-medium transition-colors ${
               tab === k
-                ? 'border-b-2 border-indigo-500 text-indigo-300'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'border-b-2 border-rose-500 text-rose-300'
+                : 'text-stone-400 hover:text-stone-200'
             }`}
           >
             {label}
@@ -231,14 +231,14 @@ export default function ApiKeysPage() {
                 <TBody>
                   {keys.map((k) => (
                     <TR key={k.id}>
-                      <TD className="font-medium text-slate-100">{k.name}</TD>
+                      <TD className="font-medium text-stone-100">{k.name}</TD>
                       <TD>
-                        <span className="font-mono text-xs text-slate-400">{k.prefix}…</span>
+                        <span className="font-mono text-xs text-stone-400">{k.prefix}…</span>
                       </TD>
-                      <TD className="text-xs text-slate-400">
+                      <TD className="text-xs text-stone-400">
                         {k.last_used_at ? fmt(k.last_used_at) : <Badge tone="slate">never</Badge>}
                       </TD>
-                      <TD className="whitespace-nowrap text-xs text-slate-400">{fmt(k.created_at)}</TD>
+                      <TD className="whitespace-nowrap text-xs text-stone-400">{fmt(k.created_at)}</TD>
                       <TD className="text-right">
                         <Button variant="danger" onClick={() => revoke(k)}>Revoke</Button>
                       </TD>
@@ -255,22 +255,22 @@ export default function ApiKeysPage() {
         <div className="space-y-4">
           <Card>
             <CardHeader>
-              <h2 className="text-base font-semibold text-slate-100">Authentication</h2>
+              <h2 className="text-base font-semibold text-stone-100">Authentication</h2>
             </CardHeader>
-            <CardBody className="space-y-3 text-sm text-slate-300">
+            <CardBody className="space-y-3 text-sm text-stone-300">
               <p>Send your API key as a bearer token on every request:</p>
-              <pre className="overflow-x-auto rounded-lg border border-slate-800 bg-slate-950/70 px-4 py-3 text-xs text-slate-300">
+              <pre className="overflow-x-auto rounded-lg border border-stone-800 bg-stone-950/70 px-4 py-3 text-xs text-stone-300">
 {`curl https://api.ai-act-desk.example/api/v1/systems \\
   -H "Authorization: Bearer sk_live_…"`}
               </pre>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-stone-500">
                 Keys are scoped to your account. Write endpoints require an interactive session and are not exposed to API keys.
               </p>
             </CardBody>
           </Card>
           <Card>
             <CardHeader>
-              <h2 className="text-base font-semibold text-slate-100">Read endpoints</h2>
+              <h2 className="text-base font-semibold text-stone-100">Read endpoints</h2>
             </CardHeader>
             <CardBody>
               <Table>
@@ -288,9 +288,9 @@ export default function ApiKeysPage() {
                         <Badge tone="green">{e.method}</Badge>
                       </TD>
                       <TD>
-                        <span className="font-mono text-xs text-indigo-300">{e.path}</span>
+                        <span className="font-mono text-xs text-rose-300">{e.path}</span>
                       </TD>
-                      <TD className="text-slate-300">{e.desc}</TD>
+                      <TD className="text-stone-300">{e.desc}</TD>
                     </TR>
                   ))}
                 </TBody>
@@ -304,10 +304,10 @@ export default function ApiKeysPage() {
         <div className="space-y-4">
           <Card>
             <CardHeader className="flex items-center justify-between">
-              <h2 className="text-base font-semibold text-slate-100">Active ruleset</h2>
+              <h2 className="text-base font-semibold text-stone-100">Active ruleset</h2>
               {rsVersion && <Badge tone="indigo">v{String(rsVersion)}</Badge>}
             </CardHeader>
-            <CardBody className="text-sm text-slate-400">
+            <CardBody className="text-sm text-stone-400">
               The deterministic classifier walks these lists in order: Article 5 prohibited practices, Annex III
               high-risk categories, then Article 50 transparency triggers. Every rule hit is cited back to its
               article.
@@ -347,14 +347,14 @@ export default function ApiKeysPage() {
               {formError}
             </div>
           )}
-          <label className="block text-xs font-medium uppercase tracking-wide text-slate-400">Key name</label>
+          <label className="block text-xs font-medium uppercase tracking-wide text-stone-400">Key name</label>
           <input
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             placeholder="CI pipeline, Reporting bot, …"
-            className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+            className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
           />
-          <p className="text-xs text-slate-500">The secret is shown only once after creation. Store it securely.</p>
+          <p className="text-xs text-stone-500">The secret is shown only once after creation. Store it securely.</p>
         </div>
       </Modal>
 
@@ -372,7 +372,7 @@ export default function ApiKeysPage() {
               This is the only time the secret for <strong>{revealed.name}</strong> will be displayed. Copy it now.
             </div>
             <div className="flex items-center gap-2">
-              <code className="flex-1 overflow-x-auto rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 font-mono text-xs text-emerald-300">
+              <code className="flex-1 overflow-x-auto rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 font-mono text-xs text-green-300">
                 {revealed.secret}
               </code>
               <Button variant="secondary" onClick={copySecret}>
@@ -398,22 +398,22 @@ function RuleColumn({
   return (
     <Card>
       <CardHeader className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-slate-100">{title}</h3>
+        <h3 className="text-sm font-semibold text-stone-100">{title}</h3>
         <Badge tone={tone}>{items.length}</Badge>
       </CardHeader>
       <CardBody>
         {items.length === 0 ? (
-          <p className="text-xs text-slate-500">No entries in this ruleset section.</p>
+          <p className="text-xs text-stone-500">No entries in this ruleset section.</p>
         ) : (
           <ul className="space-y-2">
             {items.map((it, i) => (
-              <li key={i} className="rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-2">
+              <li key={i} className="rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-2">
                 <div className="flex items-center gap-2">
-                  {it.ref && <span className="font-mono text-xs text-indigo-300">{it.ref}</span>}
-                  {it.code && <span className="font-mono text-[10px] text-slate-500">{it.code}</span>}
+                  {it.ref && <span className="font-mono text-xs text-rose-300">{it.ref}</span>}
+                  {it.code && <span className="font-mono text-[10px] text-stone-500">{it.code}</span>}
                 </div>
-                <div className="mt-0.5 text-sm text-slate-200">{it.title || it.code || 'Rule'}</div>
-                {it.description && <p className="mt-1 text-xs text-slate-400">{it.description}</p>}
+                <div className="mt-0.5 text-sm text-stone-200">{it.title || it.code || 'Rule'}</div>
+                {it.description && <p className="mt-1 text-xs text-stone-400">{it.description}</p>}
               </li>
             ))}
           </ul>

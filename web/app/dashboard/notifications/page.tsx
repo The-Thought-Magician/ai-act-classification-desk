@@ -143,8 +143,8 @@ export default function NotificationsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Notifications</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">Notifications</h1>
+          <p className="mt-1 text-sm text-stone-400">
             Classification changes, role flips, deadlines, and compliance events.
           </p>
         </div>
@@ -175,7 +175,7 @@ export default function NotificationsPage() {
           <button
             onClick={() => setTab('all')}
             className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
-              tab === 'all' ? 'bg-indigo-500/15 text-indigo-200' : 'text-slate-400 hover:text-slate-200'
+              tab === 'all' ? 'bg-rose-500/15 text-rose-200' : 'text-stone-400 hover:text-stone-200'
             }`}
           >
             All
@@ -183,7 +183,7 @@ export default function NotificationsPage() {
           <button
             onClick={() => setTab('unread')}
             className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
-              tab === 'unread' ? 'bg-indigo-500/15 text-indigo-200' : 'text-slate-400 hover:text-slate-200'
+              tab === 'unread' ? 'bg-rose-500/15 text-rose-200' : 'text-stone-400 hover:text-stone-200'
             }`}
           >
             Unread {unreadCount > 0 && <span className="ml-1 text-amber-300">({unreadCount})</span>}
@@ -203,32 +203,32 @@ export default function NotificationsPage() {
               />
             </div>
           ) : (
-            <ul className="divide-y divide-slate-800">
+            <ul className="divide-y divide-stone-800">
               {visible.map((n) => {
                 const meta = metaFor(n.type)
                 const href = hrefFor(n)
                 const inner = (
                   <div
                     className={`flex items-start gap-4 px-5 py-4 transition-colors ${
-                      n.read ? 'bg-transparent' : 'bg-indigo-500/[0.04]'
-                    } ${href ? 'hover:bg-slate-900/60' : ''}`}
+                      n.read ? 'bg-transparent' : 'bg-rose-500/[0.04]'
+                    } ${href ? 'hover:bg-stone-900/60' : ''}`}
                   >
                     {!n.read && (
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-indigo-400" aria-label="unread" />
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-rose-400" aria-label="unread" />
                     )}
                     {n.read && <span className="mt-2 h-2 w-2 shrink-0" />}
-                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-950/60 text-indigo-300">
+                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-stone-700 bg-stone-950/60 text-rose-300">
                       {meta.icon}
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className={`font-medium ${n.read ? 'text-slate-300' : 'text-slate-100'}`}>
+                        <span className={`font-medium ${n.read ? 'text-stone-300' : 'text-stone-100'}`}>
                           {n.title || 'Notification'}
                         </span>
                         {n.type && <Badge tone={meta.tone}>{n.type.replace(/_/g, ' ')}</Badge>}
                       </div>
-                      {n.body && <p className="mt-1 text-sm text-slate-400">{n.body}</p>}
-                      <p className="mt-1 text-xs text-slate-500">{formatTime(n.created_at)}</p>
+                      {n.body && <p className="mt-1 text-sm text-stone-400">{n.body}</p>}
+                      <p className="mt-1 text-xs text-stone-500">{formatTime(n.created_at)}</p>
                     </div>
                     {!n.read && (
                       <button
@@ -237,7 +237,7 @@ export default function NotificationsPage() {
                           markRead(n.id)
                         }}
                         disabled={busyId === n.id}
-                        className="shrink-0 rounded-lg border border-slate-700 px-2.5 py-1 text-xs text-slate-300 hover:border-indigo-500/50 hover:text-indigo-200 disabled:opacity-50"
+                        className="shrink-0 rounded-lg border border-stone-700 px-2.5 py-1 text-xs text-stone-300 hover:border-rose-500/50 hover:text-rose-200 disabled:opacity-50"
                       >
                         {busyId === n.id ? '…' : 'Mark read'}
                       </button>

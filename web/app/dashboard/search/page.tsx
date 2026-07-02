@@ -130,8 +130,8 @@ export default function SearchPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-100">Search</h1>
-        <p className="mt-1 text-sm text-slate-400">
+        <h1 className="text-2xl font-bold text-stone-100">Search</h1>
+        <p className="mt-1 text-sm text-stone-400">
           Search across AI systems, obligations, evidence, transparency notices, and registry packages.
         </p>
       </div>
@@ -140,13 +140,13 @@ export default function SearchPage() {
         <CardBody>
           <form onSubmit={onSubmit} className="flex flex-col gap-3 sm:flex-row">
             <div className="relative flex-1">
-              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">⌕</span>
+              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-stone-500">⌕</span>
               <input
                 autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search systems, obligations, evidence, notices…"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950/60 py-2 pl-9 pr-3 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950/60 py-2 pl-9 pr-3 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
               />
             </div>
             <Button type="submit" disabled={loading}>
@@ -198,8 +198,8 @@ export default function SearchPage() {
               onClick={() => setActiveType('all')}
               className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                 activeType === 'all'
-                  ? 'border-indigo-500/50 bg-indigo-500/15 text-indigo-200'
-                  : 'border-slate-700 text-slate-400 hover:text-slate-200'
+                  ? 'border-rose-500/50 bg-rose-500/15 text-rose-200'
+                  : 'border-stone-700 text-stone-400 hover:text-stone-200'
               }`}
             >
               All {results.length}
@@ -210,8 +210,8 @@ export default function SearchPage() {
                 onClick={() => setActiveType(label)}
                 className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                   activeType === label
-                    ? 'border-indigo-500/50 bg-indigo-500/15 text-indigo-200'
-                    : 'border-slate-700 text-slate-400 hover:text-slate-200'
+                    ? 'border-rose-500/50 bg-rose-500/15 text-rose-200'
+                    : 'border-stone-700 text-stone-400 hover:text-stone-200'
                 }`}
               >
                 {label} {count}
@@ -225,20 +225,20 @@ export default function SearchPage() {
               const subtitle = subtitleFor(r)
               return (
                 <Link key={`${r.type}-${r.id}-${i}`} href={hrefFor(r)} className="block">
-                  <div className="flex items-start gap-4 rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-4 transition-colors hover:border-indigo-500/40 hover:bg-slate-900">
-                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-950/60 text-lg text-indigo-300">
+                  <div className="flex items-start gap-4 rounded-xl border border-stone-800 bg-stone-900/60 px-5 py-4 transition-colors hover:border-rose-500/40 hover:bg-stone-900">
+                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-stone-700 bg-stone-950/60 text-lg text-rose-300">
                       {meta.icon}
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="truncate font-medium text-slate-100">{titleFor(r)}</span>
+                        <span className="truncate font-medium text-stone-100">{titleFor(r)}</span>
                         <Badge tone={meta.tone}>{meta.label}</Badge>
                         {r.tier && <Badge tone="amber">{r.tier}</Badge>}
                         {r.status && <Badge tone="slate">{r.status}</Badge>}
                       </div>
-                      {subtitle && <p className="mt-1 line-clamp-2 text-sm text-slate-400">{subtitle}</p>}
+                      {subtitle && <p className="mt-1 line-clamp-2 text-sm text-stone-400">{subtitle}</p>}
                     </div>
-                    <span className="mt-1 shrink-0 text-slate-600">→</span>
+                    <span className="mt-1 shrink-0 text-stone-600">→</span>
                   </div>
                 </Link>
               )

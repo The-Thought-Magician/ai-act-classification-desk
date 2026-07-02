@@ -43,7 +43,7 @@ interface AiSystem {
 }
 
 function inputCls(extra = '') {
-  return `w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 ${extra}`
+  return `w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500 ${extra}`
 }
 
 // Extract {{token}} placeholders from a template body.
@@ -232,8 +232,8 @@ export default function NoticesPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Transparency Notices</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">Transparency Notices</h1>
+          <p className="mt-1 text-sm text-stone-400">
             Article 50 end-user disclosures: build, version, preview and publish.
           </p>
         </div>
@@ -303,12 +303,12 @@ export default function NoticesPage() {
           <TBody>
             {filtered.map((n) => (
               <TR key={n.id}>
-                <TD className="font-medium text-slate-100">{systemName(n.system_id)}</TD>
+                <TD className="font-medium text-stone-100">{systemName(n.system_id)}</TD>
                 <TD>
                   <Badge tone="indigo">{n.trigger_code}</Badge>
                 </TD>
-                <TD className="uppercase text-slate-400">{n.locale}</TD>
-                <TD className="text-slate-400">v{n.version}</TD>
+                <TD className="uppercase text-stone-400">{n.locale}</TD>
+                <TD className="text-stone-400">v{n.version}</TD>
                 <TD>
                   <Badge tone={n.published ? statusTone('published') : statusTone('draft')}>
                     {n.published ? 'published' : 'draft'}
@@ -358,7 +358,7 @@ export default function NoticesPage() {
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="space-y-4">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">System</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">System</label>
               <select className={inputCls()} value={bSystemId} onChange={(e) => setBSystemId(e.target.value)}>
                 <option value="">Select system...</option>
                 {systems.map((s) => (
@@ -369,7 +369,7 @@ export default function NoticesPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Template / trigger</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Template / trigger</label>
               <select className={inputCls()} value={bTemplate} onChange={(e) => selectTemplate(e.target.value)}>
                 <option value="">Custom (no template)</option>
                 {templates.map((t) => (
@@ -379,17 +379,17 @@ export default function NoticesPage() {
                 ))}
               </select>
               {bTemplate && (
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-stone-500">
                   {templates.find((t) => t.trigger_code === bTemplate)?.description}
                 </p>
               )}
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Locale</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Locale</label>
               <input className={inputCls()} value={bLocale} onChange={(e) => setBLocale(e.target.value)} />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Body</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Body</label>
               <textarea
                 className={inputCls('min-h-[140px] font-mono text-xs')}
                 placeholder="Notice text. Use {{token}} placeholders for substitution."
@@ -399,7 +399,7 @@ export default function NoticesPage() {
             </div>
             {bodyTokens.length > 0 && (
               <div className="space-y-2">
-                <div className="text-xs font-medium text-slate-400">Tokens</div>
+                <div className="text-xs font-medium text-stone-400">Tokens</div>
                 {bodyTokens.map((k) => (
                   <div key={k} className="flex items-center gap-2">
                     <span className="w-32 truncate font-mono text-xs text-amber-300">{k}</span>
@@ -415,9 +415,9 @@ export default function NoticesPage() {
             )}
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Live preview</label>
-            <div className="min-h-[200px] whitespace-pre-wrap rounded-lg border border-slate-800 bg-slate-950/60 p-4 text-sm text-slate-200">
-              {previewBody.trim() ? previewBody : <span className="text-slate-600">Preview appears here...</span>}
+            <label className="mb-1 block text-xs font-medium text-stone-400">Live preview</label>
+            <div className="min-h-[200px] whitespace-pre-wrap rounded-lg border border-stone-800 bg-stone-950/60 p-4 text-sm text-stone-200">
+              {previewBody.trim() ? previewBody : <span className="text-stone-600">Preview appears here...</span>}
             </div>
           </div>
         </div>
@@ -448,7 +448,7 @@ export default function NoticesPage() {
       >
         {preview && (
           <div className="space-y-3">
-            <div className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-stone-400">
               <Badge tone="indigo">{systemName(preview.system_id)}</Badge>
               <Badge tone="slate">{preview.locale.toUpperCase()}</Badge>
               <Badge tone={preview.published ? statusTone('published') : statusTone('draft')}>
@@ -457,11 +457,11 @@ export default function NoticesPage() {
             </div>
             {preview.body_html ? (
               <div
-                className="prose prose-invert max-w-none text-sm text-slate-200"
+                className="prose prose-invert max-w-none text-sm text-stone-200"
                 dangerouslySetInnerHTML={{ __html: preview.body_html }}
               />
             ) : (
-              <div className="whitespace-pre-wrap rounded-lg border border-slate-800 bg-slate-950/60 p-4 text-sm text-slate-200">
+              <div className="whitespace-pre-wrap rounded-lg border border-stone-800 bg-stone-950/60 p-4 text-sm text-stone-200">
                 {preview.body}
               </div>
             )}

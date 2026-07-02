@@ -174,12 +174,12 @@ function ChartCard({ title, subtitle, children, empty }: { title: string; subtit
   return (
     <Card>
       <CardHeader>
-        <h2 className="text-sm font-semibold text-slate-200">{title}</h2>
-        {subtitle && <p className="mt-0.5 text-xs text-slate-500">{subtitle}</p>}
+        <h2 className="text-sm font-semibold text-stone-200">{title}</h2>
+        {subtitle && <p className="mt-0.5 text-xs text-stone-500">{subtitle}</p>}
       </CardHeader>
       <CardBody>
         {empty ? (
-          <p className="py-10 text-center text-sm text-slate-500">No data for this period yet.</p>
+          <p className="py-10 text-center text-sm text-stone-500">No data for this period yet.</p>
         ) : (
           children
         )}
@@ -248,8 +248,8 @@ export default function AnalyticsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Analytics</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">Analytics</h1>
+          <p className="mt-1 text-sm text-stone-400">
             Portfolio risk distribution, registry readiness, and compliance trends over time.
           </p>
         </div>
@@ -283,12 +283,12 @@ export default function AnalyticsPage() {
           <div className="grid gap-6 lg:grid-cols-2">
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-slate-200">Risk tier distribution</h2>
-                <p className="mt-0.5 text-xs text-slate-500">Systems classified by EU AI Act risk tier</p>
+                <h2 className="text-sm font-semibold text-stone-200">Risk tier distribution</h2>
+                <p className="mt-0.5 text-xs text-stone-500">Systems classified by EU AI Act risk tier</p>
               </CardHeader>
               <CardBody>
                 {tierDist.every((t) => t.count === 0) ? (
-                  <p className="py-10 text-center text-sm text-slate-500">No classified systems yet.</p>
+                  <p className="py-10 text-center text-sm text-stone-500">No classified systems yet.</p>
                 ) : (
                   <div className="space-y-3">
                     {tierDist.map((t) => {
@@ -299,9 +299,9 @@ export default function AnalyticsPage() {
                             <span className="flex items-center gap-2">
                               <Badge tone={tierTone(t.tier)}>{t.tier}</Badge>
                             </span>
-                            <span className="text-slate-400">{t.count} · {pct.toFixed(0)}%</span>
+                            <span className="text-stone-400">{t.count} · {pct.toFixed(0)}%</span>
                           </div>
-                          <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                          <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                             <div
                               className="h-full rounded-full"
                               style={{ width: `${(t.count / maxTier) * 100}%`, background: TIER_HEX[t.tier] ?? '#818cf8' }}
@@ -317,8 +317,8 @@ export default function AnalyticsPage() {
 
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-slate-200">Compliance readiness</h2>
-                <p className="mt-0.5 text-xs text-slate-500">Average registry readiness and obligation progress</p>
+                <h2 className="text-sm font-semibold text-stone-200">Compliance readiness</h2>
+                <p className="mt-0.5 text-xs text-stone-500">Average registry readiness and obligation progress</p>
               </CardHeader>
               <CardBody>
                 <div className="flex items-center justify-around gap-4 py-2">
@@ -342,7 +342,7 @@ export default function AnalyticsPage() {
                             {g.val.toFixed(0)}%
                           </text>
                         </svg>
-                        <span className="mt-1 text-xs text-slate-400">{g.label}</span>
+                        <span className="mt-1 text-xs text-stone-400">{g.label}</span>
                       </div>
                     )
                   })}
@@ -353,12 +353,12 @@ export default function AnalyticsPage() {
 
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Top blocking requirements</h2>
-              <p className="mt-0.5 text-xs text-slate-500">Evidence requirements blocking the most systems</p>
+              <h2 className="text-sm font-semibold text-stone-200">Top blocking requirements</h2>
+              <p className="mt-0.5 text-xs text-stone-500">Evidence requirements blocking the most systems</p>
             </CardHeader>
             <CardBody>
               {blocking.length === 0 ? (
-                <p className="py-6 text-center text-sm text-slate-500">No blocking requirements. Nicely done.</p>
+                <p className="py-6 text-center text-sm text-stone-500">No blocking requirements. Nicely done.</p>
               ) : (
                 <div className="space-y-3">
                   {blocking.map((b, i) => {
@@ -367,10 +367,10 @@ export default function AnalyticsPage() {
                     return (
                       <div key={i}>
                         <div className="mb-1 flex items-center justify-between text-sm">
-                          <span className="truncate text-slate-200">{label}</span>
-                          <span className="ml-3 shrink-0 text-slate-400">{num(b.count)} systems</span>
+                          <span className="truncate text-stone-200">{label}</span>
+                          <span className="ml-3 shrink-0 text-stone-400">{num(b.count)} systems</span>
                         </div>
-                        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                        <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
                           <div className="h-full rounded-full bg-red-400/70" style={{ width: `${(num(b.count) / max) * 100}%` }} />
                         </div>
                       </div>

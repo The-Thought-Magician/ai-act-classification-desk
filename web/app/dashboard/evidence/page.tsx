@@ -47,7 +47,7 @@ const STATUS_OPTIONS = [
 ]
 
 function inputCls(extra = '') {
-  return `w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 ${extra}`
+  return `w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500 ${extra}`
 }
 
 export default function EvidencePage() {
@@ -251,8 +251,8 @@ export default function EvidencePage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Conformity Evidence</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">Conformity Evidence</h1>
+          <p className="mt-1 text-sm text-stone-400">
             Annex IV technical-documentation registry and reusable evidence artifacts.
           </p>
         </div>
@@ -276,20 +276,20 @@ export default function EvidencePage() {
       {categoryReadiness.length > 0 && (
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Readiness by Annex IV Category</h2>
+            <h2 className="text-sm font-semibold text-stone-200">Readiness by Annex IV Category</h2>
           </CardHeader>
           <CardBody className="space-y-3">
             {categoryReadiness.map((c) => (
               <div key={c.category}>
                 <div className="mb-1 flex items-center justify-between text-xs">
-                  <span className="font-medium text-slate-300">{c.category}</span>
-                  <span className="text-slate-500">
+                  <span className="font-medium text-stone-300">{c.category}</span>
+                  <span className="text-stone-500">
                     {c.approved}/{c.total} approved · {c.pct}%
                   </span>
                 </div>
-                <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
                   <div
-                    className={`h-full rounded-full ${c.pct === 100 ? 'bg-emerald-500' : c.pct >= 50 ? 'bg-amber-500' : 'bg-indigo-500'}`}
+                    className={`h-full rounded-full ${c.pct === 100 ? 'bg-green-500' : c.pct >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
                     style={{ width: `${c.pct}%` }}
                   />
                 </div>
@@ -357,8 +357,8 @@ export default function EvidencePage() {
             {filtered.map((r) => (
               <TR key={r.id}>
                 <TD>
-                  <div className="font-medium text-slate-100">{r.title}</div>
-                  <div className="mt-0.5 flex items-center gap-2 text-xs text-slate-500">
+                  <div className="font-medium text-stone-100">{r.title}</div>
+                  <div className="mt-0.5 flex items-center gap-2 text-xs text-stone-500">
                     <span className="font-mono">{r.requirement_code}</span>
                     {r.required ? (
                       <Badge tone="indigo">required</Badge>
@@ -367,7 +367,7 @@ export default function EvidencePage() {
                     )}
                   </div>
                 </TD>
-                <TD className="text-slate-400">{r.category}</TD>
+                <TD className="text-stone-400">{r.category}</TD>
                 <TD>
                   <Badge tone={statusTone(r.status)}>{r.status}</Badge>
                 </TD>
@@ -377,7 +377,7 @@ export default function EvidencePage() {
                       href={r.artifact_url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-indigo-300 underline-offset-2 hover:underline"
+                      className="text-rose-300 underline-offset-2 hover:underline"
                     >
                       View
                     </a>
@@ -398,16 +398,16 @@ export default function EvidencePage() {
                       ))}
                     </select>
                   ) : (
-                    <span className="text-xs text-slate-600">none</span>
+                    <span className="text-xs text-stone-600">none</span>
                   )}
                 </TD>
-                <TD className="text-slate-400">{r.reviewer || '—'}</TD>
+                <TD className="text-stone-400">{r.reviewer || '—'}</TD>
                 <TD className="text-right">
                   <div className="flex justify-end gap-2">
                     {r.status !== 'approved' && (
                       <Button
                         variant="ghost"
-                        className="px-2 py-1 text-xs text-emerald-300"
+                        className="px-2 py-1 text-xs text-green-300"
                         disabled={rowBusy === r.id}
                         onClick={() => quickStatus(r, 'approved')}
                       >
@@ -429,8 +429,8 @@ export default function EvidencePage() {
       <Card>
         <CardHeader className="flex items-center justify-between">
           <div>
-            <h2 className="text-sm font-semibold text-slate-200">Reusable Artifacts</h2>
-            <p className="mt-0.5 text-xs text-slate-500">
+            <h2 className="text-sm font-semibold text-stone-200">Reusable Artifacts</h2>
+            <p className="mt-0.5 text-xs text-stone-500">
               Documents you can link to multiple Annex IV requirements across systems.
             </p>
           </div>
@@ -440,7 +440,7 @@ export default function EvidencePage() {
         </CardHeader>
         <CardBody>
           {artifacts.length === 0 ? (
-            <p className="py-6 text-center text-sm text-slate-500">
+            <p className="py-6 text-center text-sm text-stone-500">
               No reusable artifacts yet. Add one to link evidence across systems.
             </p>
           ) : (
@@ -448,13 +448,13 @@ export default function EvidencePage() {
               {artifacts.map((a) => (
                 <div
                   key={a.id}
-                  className="flex flex-col rounded-lg border border-slate-800 bg-slate-950/40 p-4"
+                  className="flex flex-col rounded-lg border border-stone-800 bg-stone-950/40 p-4"
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <span className="font-medium text-slate-100">{a.name}</span>
+                    <span className="font-medium text-stone-100">{a.name}</span>
                     <button
                       onClick={() => removeArtifact(a.id)}
-                      className="text-slate-500 hover:text-red-400"
+                      className="text-stone-500 hover:text-red-400"
                       aria-label="Delete artifact"
                     >
                       ✕
@@ -464,12 +464,12 @@ export default function EvidencePage() {
                     href={a.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-1 truncate text-xs text-indigo-300 hover:underline"
+                    className="mt-1 truncate text-xs text-rose-300 hover:underline"
                   >
                     {a.url}
                   </a>
                   {a.meta && typeof (a.meta as Record<string, unknown>).note === 'string' && (
-                    <p className="mt-2 text-xs text-slate-400">
+                    <p className="mt-2 text-xs text-stone-400">
                       {String((a.meta as Record<string, unknown>).note)}
                     </p>
                   )}
@@ -498,12 +498,12 @@ export default function EvidencePage() {
       >
         {editing && (
           <div className="space-y-4">
-            <div className="text-xs text-slate-500">
+            <div className="text-xs text-stone-500">
               <span className="font-mono">{editing.requirement_code}</span> · {editing.category}
             </div>
-            {editing.description && <p className="text-sm text-slate-400">{editing.description}</p>}
+            {editing.description && <p className="text-sm text-stone-400">{editing.description}</p>}
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Status</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Status</label>
               <select className={inputCls()} value={editStatus} onChange={(e) => setEditStatus(e.target.value)}>
                 {STATUS_OPTIONS.map((s) => (
                   <option key={s} value={s}>
@@ -513,7 +513,7 @@ export default function EvidencePage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Artifact URL</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Artifact URL</label>
               <input
                 className={inputCls()}
                 placeholder="https://..."
@@ -536,7 +536,7 @@ export default function EvidencePage() {
               )}
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Reviewer</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Reviewer</label>
               <input
                 className={inputCls()}
                 placeholder="reviewer name"
@@ -545,7 +545,7 @@ export default function EvidencePage() {
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Notes</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Notes</label>
               <textarea
                 className={inputCls('min-h-[80px]')}
                 placeholder="Review notes..."
@@ -575,7 +575,7 @@ export default function EvidencePage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Name</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Name</label>
             <input
               className={inputCls()}
               placeholder="e.g. Risk Management Plan v2"
@@ -584,7 +584,7 @@ export default function EvidencePage() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">URL</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">URL</label>
             <input
               className={inputCls()}
               placeholder="https://..."
@@ -593,7 +593,7 @@ export default function EvidencePage() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Note (optional)</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Note (optional)</label>
             <textarea
               className={inputCls('min-h-[70px]')}
               placeholder="Short description..."

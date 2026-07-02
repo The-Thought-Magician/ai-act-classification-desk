@@ -224,8 +224,8 @@ export default function WebhooksPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Webhooks</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-bold text-stone-100">Webhooks</h1>
+          <p className="mt-1 text-sm text-stone-400">
             Push compliance events to your systems. Subscribe to classifier, role-flip, and registry events.
           </p>
         </div>
@@ -233,9 +233,9 @@ export default function WebhooksPage() {
       </div>
 
       {banner && (
-        <div className="flex items-center justify-between rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-sm text-indigo-200">
+        <div className="flex items-center justify-between rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-2 text-sm text-rose-200">
           <span>{banner}</span>
-          <button onClick={() => setBanner(null)} className="text-indigo-300 hover:text-white">
+          <button onClick={() => setBanner(null)} className="text-rose-300 hover:text-white">
             ✕
           </button>
         </div>
@@ -277,9 +277,9 @@ export default function WebhooksPage() {
             </THead>
             <TBody>
               {hooks.map((h) => (
-                <TR key={h.id} className={selected?.id === h.id ? 'bg-slate-900/60' : ''}>
+                <TR key={h.id} className={selected?.id === h.id ? 'bg-stone-900/60' : ''}>
                   <TD className="max-w-[280px]">
-                    <span className="block truncate font-mono text-xs text-slate-200" title={h.url}>
+                    <span className="block truncate font-mono text-xs text-stone-200" title={h.url}>
                       {h.url}
                     </span>
                   </TD>
@@ -293,7 +293,7 @@ export default function WebhooksPage() {
                       {(h.events || []).length > 3 && (
                         <Badge tone="slate">+{(h.events || []).length - 3}</Badge>
                       )}
-                      {(h.events || []).length === 0 && <span className="text-xs text-slate-500">none</span>}
+                      {(h.events || []).length === 0 && <span className="text-xs text-stone-500">none</span>}
                     </div>
                   </TD>
                   <TD>
@@ -301,7 +301,7 @@ export default function WebhooksPage() {
                       <Badge tone={h.active ? 'green' : 'slate'}>{h.active ? 'active' : 'paused'}</Badge>
                     </button>
                   </TD>
-                  <TD className="whitespace-nowrap text-xs text-slate-400">{fmt(h.created_at)}</TD>
+                  <TD className="whitespace-nowrap text-xs text-stone-400">{fmt(h.created_at)}</TD>
                   <TD>
                     <div className="flex justify-end gap-1">
                       <Button variant="ghost" onClick={() => loadDeliveries(h)}>
@@ -329,8 +329,8 @@ export default function WebhooksPage() {
         <Card>
           <CardHeader className="flex items-center justify-between">
             <div>
-              <h2 className="text-base font-semibold text-slate-100">Delivery log</h2>
-              <p className="mt-0.5 truncate font-mono text-xs text-slate-500">{selected.url}</p>
+              <h2 className="text-base font-semibold text-stone-100">Delivery log</h2>
+              <p className="mt-0.5 truncate font-mono text-xs text-stone-500">{selected.url}</p>
             </div>
             <div className="flex gap-2">
               <Button variant="secondary" onClick={() => loadDeliveries(selected)}>
@@ -357,27 +357,27 @@ export default function WebhooksPage() {
             ) : (
               <div className="space-y-2">
                 {deliveries.map((d) => (
-                  <div key={d.id} className="rounded-lg border border-slate-800 bg-slate-900/40">
+                  <div key={d.id} className="rounded-lg border border-stone-800 bg-stone-900/40">
                     <button
                       className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left"
                       onClick={() => setExpanded(expanded === d.id ? null : d.id)}
                     >
                       <div className="flex items-center gap-3">
                         <Badge tone={d.ok ? 'green' : 'red'}>{d.ok ? 'ok' : 'failed'}</Badge>
-                        <span className="font-mono text-xs text-slate-200">{d.event}</span>
-                        <span className="text-xs text-slate-500">
+                        <span className="font-mono text-xs text-stone-200">{d.event}</span>
+                        <span className="text-xs text-stone-500">
                           HTTP {d.status_code ?? '—'}
                         </span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="text-xs text-slate-500" title={fmt(d.created_at)}>
+                        <span className="text-xs text-stone-500" title={fmt(d.created_at)}>
                           {relTime(d.created_at)}
                         </span>
-                        <span className="text-slate-600">{expanded === d.id ? '▾' : '▸'}</span>
+                        <span className="text-stone-600">{expanded === d.id ? '▾' : '▸'}</span>
                       </div>
                     </button>
                     {expanded === d.id && (
-                      <pre className="max-h-64 overflow-auto border-t border-slate-800 bg-slate-950/60 px-4 py-3 text-xs text-slate-300">
+                      <pre className="max-h-64 overflow-auto border-t border-stone-800 bg-stone-950/60 px-4 py-3 text-xs text-stone-300">
                         {JSON.stringify(d.payload, null, 2)}
                       </pre>
                     )}
@@ -411,7 +411,7 @@ export default function WebhooksPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-400">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-400">
               Endpoint URL
             </label>
             <input
@@ -419,36 +419,36 @@ export default function WebhooksPage() {
               value={form.url}
               onChange={(e) => setForm((f) => ({ ...f, url: e.target.value }))}
               placeholder="https://example.com/hooks/ai-act"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-slate-400">
+            <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-stone-400">
               Subscribed events
             </label>
             <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
               {EVENT_CATALOG.map((ev) => (
                 <label
                   key={ev}
-                  className="flex cursor-pointer items-center gap-2 rounded-md border border-slate-800 bg-slate-950/50 px-3 py-2 text-sm text-slate-300 hover:border-indigo-500/40"
+                  className="flex cursor-pointer items-center gap-2 rounded-md border border-stone-800 bg-stone-950/50 px-3 py-2 text-sm text-stone-300 hover:border-rose-500/40"
                 >
                   <input
                     type="checkbox"
                     checked={form.events.includes(ev)}
                     onChange={() => toggleEvent(ev)}
-                    className="accent-indigo-500"
+                    className="accent-rose-500"
                   />
                   <span className="font-mono text-xs">{ev}</span>
                 </label>
               ))}
             </div>
           </div>
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
+          <label className="flex cursor-pointer items-center gap-2 text-sm text-stone-300">
             <input
               type="checkbox"
               checked={form.active}
               onChange={(e) => setForm((f) => ({ ...f, active: e.target.checked }))}
-              className="accent-indigo-500"
+              className="accent-rose-500"
             />
             Active (deliver events immediately)
           </label>

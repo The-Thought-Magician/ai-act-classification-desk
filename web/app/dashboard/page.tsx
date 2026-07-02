@@ -73,8 +73,8 @@ const TIER_LABEL: Record<string, string> = {
 const TIER_BAR: Record<string, string> = {
   prohibited: 'bg-red-500',
   high: 'bg-amber-500',
-  limited: 'bg-sky-500',
-  minimal: 'bg-emerald-500',
+  limited: 'bg-orange-500',
+  minimal: 'bg-green-500',
 }
 
 function fmtDate(s?: string): string {
@@ -178,7 +178,7 @@ export default function DashboardPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Portfolio Overview</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             EU AI Act compliance posture across every registered system.
           </p>
         </div>
@@ -243,12 +243,12 @@ export default function DashboardPage() {
         {/* Tier distribution */}
         <Card className="lg:col-span-2">
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">Risk-Tier Distribution</h2>
-            <span className="text-xs text-slate-500">{totalSystems} classified</span>
+            <h2 className="text-sm font-semibold text-stone-200">Risk-Tier Distribution</h2>
+            <span className="text-xs text-stone-500">{totalSystems} classified</span>
           </CardHeader>
           <CardBody className="space-y-4">
             {totalSystems === 0 ? (
-              <p className="text-sm text-slate-500">No systems classified yet.</p>
+              <p className="text-sm text-stone-500">No systems classified yet.</p>
             ) : (
               TIER_ORDER.map((tier) => {
                 const count = tierCounts[tier] ?? 0
@@ -256,10 +256,10 @@ export default function DashboardPage() {
                 return (
                   <div key={tier}>
                     <div className="mb-1 flex items-center justify-between text-xs">
-                      <span className="font-medium text-slate-300">{TIER_LABEL[tier]}</span>
-                      <span className="text-slate-500">{count}</span>
+                      <span className="font-medium text-stone-300">{TIER_LABEL[tier]}</span>
+                      <span className="text-stone-500">{count}</span>
                     </div>
-                    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                       <div
                         className={`h-full rounded-full ${TIER_BAR[tier]} transition-all`}
                         style={{ width: `${pct}%` }}
@@ -275,22 +275,22 @@ export default function DashboardPage() {
         {/* Registry status */}
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Registry Status</h2>
+            <h2 className="text-sm font-semibold text-stone-200">Registry Status</h2>
           </CardHeader>
           <CardBody className="space-y-3">
             {Object.keys(registryCounts).length === 0 ? (
-              <p className="text-sm text-slate-500">No registry packages yet.</p>
+              <p className="text-sm text-stone-500">No registry packages yet.</p>
             ) : (
               Object.entries(registryCounts).map(([status, count]) => (
                 <div key={status} className="flex items-center justify-between">
                   <Badge tone={statusTone(status)}>{status.replace(/_/g, ' ')}</Badge>
-                  <span className="text-sm font-semibold text-slate-200">{count}</span>
+                  <span className="text-sm font-semibold text-stone-200">{count}</span>
                 </div>
               ))
             )}
             <Link
               href="/dashboard/registry"
-              className="mt-2 block text-xs font-medium text-indigo-400 hover:text-indigo-300"
+              className="mt-2 block text-xs font-medium text-rose-400 hover:text-rose-300"
             >
               Open registry →
             </Link>
@@ -302,17 +302,17 @@ export default function DashboardPage() {
         {/* Upcoming deadlines */}
         <Card>
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">Deadlines</h2>
+            <h2 className="text-sm font-semibold text-stone-200">Deadlines</h2>
             <Link
               href="/dashboard/deadlines"
-              className="text-xs font-medium text-indigo-400 hover:text-indigo-300"
+              className="text-xs font-medium text-rose-400 hover:text-rose-300"
             >
               View all →
             </Link>
           </CardHeader>
           <CardBody className="space-y-2">
             {overdue.length === 0 && dueSoon.length === 0 && upcoming.length === 0 ? (
-              <p className="text-sm text-slate-500">No deadlines tracked.</p>
+              <p className="text-sm text-stone-500">No deadlines tracked.</p>
             ) : (
               [
                 ...overdue.map((d) => ({ d, bucket: 'overdue' as const })),
@@ -325,11 +325,11 @@ export default function DashboardPage() {
                   return (
                     <div
                       key={d.id || `${bucket}-${i}`}
-                      className="flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2"
+                      className="flex items-center justify-between gap-3 rounded-lg border border-stone-800 bg-stone-900/40 px-3 py-2"
                     >
                       <div className="min-w-0">
-                        <div className="truncate text-sm text-slate-200">{deadlineLabel(d)}</div>
-                        <div className="text-xs text-slate-500">
+                        <div className="truncate text-sm text-stone-200">{deadlineLabel(d)}</div>
+                        <div className="text-xs text-stone-500">
                           {d.source ? `${d.source} · ` : ''}
                           {fmtDate(d.due_date)}
                         </div>
@@ -353,25 +353,25 @@ export default function DashboardPage() {
         {/* Recent activity */}
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Recent Activity</h2>
+            <h2 className="text-sm font-semibold text-stone-200">Recent Activity</h2>
           </CardHeader>
           <CardBody className="space-y-2">
             {recentClassifications.length === 0 && recentRoleFlips.length === 0 ? (
-              <p className="text-sm text-slate-500">No recent classifications or role changes.</p>
+              <p className="text-sm text-stone-500">No recent classifications or role changes.</p>
             ) : (
               <>
                 {recentClassifications.slice(0, 6).map((c, i) => (
                   <Link
                     key={c.id || `clf-${i}`}
                     href={c.system_id ? `/dashboard/systems/${c.system_id}` : '/dashboard/systems'}
-                    className="flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2 hover:border-indigo-500/40"
+                    className="flex items-center justify-between gap-3 rounded-lg border border-stone-800 bg-stone-900/40 px-3 py-2 hover:border-rose-500/40"
                   >
                     <div className="min-w-0">
-                      <div className="truncate text-sm text-slate-200">
+                      <div className="truncate text-sm text-stone-200">
                         {c.system_name || 'System'} classified
                         {c.is_override ? ' (override)' : ''}
                       </div>
-                      <div className="text-xs text-slate-500">{fmtDate(c.created_at)}</div>
+                      <div className="text-xs text-stone-500">{fmtDate(c.created_at)}</div>
                     </div>
                     <Badge tone={tierTone(c.tier)}>{c.tier ? TIER_LABEL[c.tier] || c.tier : '—'}</Badge>
                   </Link>
@@ -380,13 +380,13 @@ export default function DashboardPage() {
                   <Link
                     key={r.id || `flip-${i}`}
                     href={r.system_id ? `/dashboard/systems/${r.system_id}` : '/dashboard/roles'}
-                    className="flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2 hover:border-indigo-500/40"
+                    className="flex items-center justify-between gap-3 rounded-lg border border-stone-800 bg-stone-900/40 px-3 py-2 hover:border-rose-500/40"
                   >
                     <div className="min-w-0">
-                      <div className="truncate text-sm text-slate-200">
+                      <div className="truncate text-sm text-stone-200">
                         {r.system_name || 'System'} role flip
                       </div>
-                      <div className="text-xs text-slate-500">
+                      <div className="text-xs text-stone-500">
                         {r.before_role || '?'} → {r.after_role || '?'} · {fmtDate(r.created_at)}
                       </div>
                     </div>

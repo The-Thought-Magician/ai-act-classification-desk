@@ -161,8 +161,8 @@ export default function TagsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-100">Tags & Saved Filters</h1>
-        <p className="mt-1 text-sm text-slate-400">
+        <h1 className="text-2xl font-bold text-stone-100">Tags & Saved Filters</h1>
+        <p className="mt-1 text-sm text-stone-400">
           Organize AI systems with tags and save reusable views across the workspace.
         </p>
       </div>
@@ -179,26 +179,26 @@ export default function TagsPage() {
         <Card>
           <CardHeader className="flex items-center justify-between">
             <div>
-              <h2 className="text-base font-semibold text-slate-100">Tags</h2>
-              <p className="text-xs text-slate-500">{tags.length} tag{tags.length === 1 ? '' : 's'}</p>
+              <h2 className="text-base font-semibold text-stone-100">Tags</h2>
+              <p className="text-xs text-stone-500">{tags.length} tag{tags.length === 1 ? '' : 's'}</p>
             </div>
           </CardHeader>
           <CardBody className="space-y-5">
             <form onSubmit={handleCreateTag} className="space-y-3">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
                 <div className="flex-1">
-                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                     New tag
                   </label>
                   <input
                     value={tagName}
                     onChange={(e) => setTagName(e.target.value)}
                     placeholder="e.g. customer-facing"
-                    className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                     Color
                   </label>
                   <div className="flex gap-1.5">
@@ -234,7 +234,7 @@ export default function TagsPage() {
                 {tags.map((t) => (
                   <span
                     key={t.id}
-                    className="group inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 py-1 pl-2 pr-1 text-sm text-slate-200"
+                    className="group inline-flex items-center gap-2 rounded-full border border-stone-700 bg-stone-950/60 py-1 pl-2 pr-1 text-sm text-stone-200"
                   >
                     <span
                       className="h-2.5 w-2.5 rounded-full"
@@ -245,7 +245,7 @@ export default function TagsPage() {
                       onClick={() => handleDeleteTag(t.id)}
                       disabled={busyId === t.id}
                       aria-label={`Delete ${t.name}`}
-                      className="flex h-5 w-5 items-center justify-center rounded-full text-slate-500 hover:bg-red-500/20 hover:text-red-300 disabled:opacity-50"
+                      className="flex h-5 w-5 items-center justify-center rounded-full text-stone-500 hover:bg-red-500/20 hover:text-red-300 disabled:opacity-50"
                     >
                       ✕
                     </button>
@@ -260,8 +260,8 @@ export default function TagsPage() {
         <Card>
           <CardHeader className="flex items-center justify-between">
             <div>
-              <h2 className="text-base font-semibold text-slate-100">Saved Filters</h2>
-              <p className="text-xs text-slate-500">{filters.length} filter{filters.length === 1 ? '' : 's'}</p>
+              <h2 className="text-base font-semibold text-stone-100">Saved Filters</h2>
+              <p className="text-xs text-stone-500">{filters.length} filter{filters.length === 1 ? '' : 's'}</p>
             </div>
             <Button onClick={() => setFilterModalOpen(true)}>New filter</Button>
           </CardHeader>
@@ -282,12 +282,12 @@ export default function TagsPage() {
                   return (
                     <li
                       key={f.id}
-                      className="rounded-lg border border-slate-800 bg-slate-950/40 px-4 py-3"
+                      className="rounded-lg border border-stone-800 bg-stone-950/40 px-4 py-3"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="font-medium text-slate-100">{f.name}</span>
+                            <span className="font-medium text-stone-100">{f.name}</span>
                             {f.scope && <Badge tone="indigo">{f.scope}</Badge>}
                           </div>
                           {criteriaEntries.length > 0 ? (
@@ -295,14 +295,14 @@ export default function TagsPage() {
                               {criteriaEntries.map(([k, v]) => (
                                 <span
                                   key={k}
-                                  className="rounded border border-slate-700 bg-slate-900 px-2 py-0.5 text-xs text-slate-400"
+                                  className="rounded border border-stone-700 bg-stone-900 px-2 py-0.5 text-xs text-stone-400"
                                 >
-                                  {k}: <span className="text-slate-200">{String(v)}</span>
+                                  {k}: <span className="text-stone-200">{String(v)}</span>
                                 </span>
                               ))}
                             </div>
                           ) : (
-                            <p className="mt-1 text-xs text-slate-500">No criteria</p>
+                            <p className="mt-1 text-xs text-stone-500">No criteria</p>
                           )}
                         </div>
                         <Button
@@ -338,20 +338,20 @@ export default function TagsPage() {
       >
         <form id="filter-form" onSubmit={handleCreateFilter} className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Name</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Name</label>
             <input
               value={filterName}
               onChange={(e) => setFilterName(e.target.value)}
               placeholder="e.g. High-risk in progress"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Scope</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Scope</label>
             <select
               value={filterScope}
               onChange={(e) => setFilterScope(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
             >
               {SCOPE_OPTIONS.map((s) => (
                 <option key={s} value={s}>{s}</option>
@@ -359,7 +359,7 @@ export default function TagsPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Criteria (JSON)
             </label>
             <textarea
@@ -367,9 +367,9 @@ export default function TagsPage() {
               onChange={(e) => setFilterCriteria(e.target.value)}
               rows={5}
               spellCheck={false}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 font-mono text-xs text-slate-100 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 font-mono text-xs text-stone-100 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
             />
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-stone-500">
               Key/value pairs applied as query params, e.g. {'{ "tier": "high", "status": "in-progress" }'}
             </p>
           </div>

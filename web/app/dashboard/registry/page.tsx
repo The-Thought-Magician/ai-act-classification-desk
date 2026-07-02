@@ -27,7 +27,7 @@ interface RegistryPackage {
 }
 
 function inputCls(extra = '') {
-  return `w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 ${extra}`
+  return `w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-500 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500 ${extra}`
 }
 
 // Canonical EU high-risk registration fields (Art 49 / Annex VIII).
@@ -173,8 +173,8 @@ export default function RegistryPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-100">EU Registry Packages</h1>
-        <p className="mt-1 text-sm text-slate-400">
+        <h1 className="text-2xl font-bold text-stone-100">EU Registry Packages</h1>
+        <p className="mt-1 text-sm text-stone-400">
           Assemble Article 49 high-risk registration packages with a submission-readiness gate.
         </p>
       </div>
@@ -235,16 +235,16 @@ export default function RegistryPage() {
               const pct = Math.round(p.readiness_pct ?? 0)
               return (
                 <TR key={p.id}>
-                  <TD className="font-medium text-slate-100">{labelFor(p)}</TD>
+                  <TD className="font-medium text-stone-100">{labelFor(p)}</TD>
                   <TD>
                     <div className="flex items-center gap-2">
-                      <div className="h-2 w-24 overflow-hidden rounded-full bg-slate-800">
+                      <div className="h-2 w-24 overflow-hidden rounded-full bg-stone-800">
                         <div
-                          className={`h-full rounded-full ${pct === 100 ? 'bg-emerald-500' : pct >= 50 ? 'bg-amber-500' : 'bg-indigo-500'}`}
+                          className={`h-full rounded-full ${pct === 100 ? 'bg-green-500' : pct >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
                           style={{ width: `${pct}%` }}
                         />
                       </div>
-                      <span className="text-xs text-slate-400">{pct}%</span>
+                      <span className="text-xs text-stone-400">{pct}%</span>
                     </div>
                   </TD>
                   <TD>
@@ -252,12 +252,12 @@ export default function RegistryPage() {
                   </TD>
                   <TD>
                     {blockers.length === 0 ? (
-                      <span className="text-xs text-emerald-400">none</span>
+                      <span className="text-xs text-green-400">none</span>
                     ) : (
                       <span className="text-xs text-red-300">{blockers.length} reason{blockers.length > 1 ? 's' : ''}</span>
                     )}
                   </TD>
-                  <TD className="font-mono text-xs text-slate-400">{p.registered_reference || '—'}</TD>
+                  <TD className="font-mono text-xs text-stone-400">{p.registered_reference || '—'}</TD>
                   <TD className="text-right">
                     <div className="flex justify-end gap-2">
                       <Button variant="secondary" className="px-2 py-1 text-xs" onClick={() => openEdit(p.system_id)}>
@@ -312,29 +312,29 @@ export default function RegistryPage() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {/* readiness + gate */}
             <div className="space-y-4 md:order-2">
-              <div className="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
+              <div className="rounded-lg border border-stone-800 bg-stone-950/40 p-4">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Readiness</span>
+                  <span className="text-xs font-medium uppercase tracking-wide text-stone-500">Readiness</span>
                   <Badge tone={statusTone(editing.status)}>{editing.status}</Badge>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="h-3 flex-1 overflow-hidden rounded-full bg-slate-800">
+                  <div className="h-3 flex-1 overflow-hidden rounded-full bg-stone-800">
                     <div
-                      className={`h-full rounded-full ${Math.round(editing.readiness_pct ?? 0) === 100 ? 'bg-emerald-500' : 'bg-amber-500'}`}
+                      className={`h-full rounded-full ${Math.round(editing.readiness_pct ?? 0) === 100 ? 'bg-green-500' : 'bg-amber-500'}`}
                       style={{ width: `${Math.round(editing.readiness_pct ?? 0)}%` }}
                     />
                   </div>
-                  <span className="text-lg font-bold text-slate-100">{Math.round(editing.readiness_pct ?? 0)}%</span>
+                  <span className="text-lg font-bold text-stone-100">{Math.round(editing.readiness_pct ?? 0)}%</span>
                 </div>
-                <div className="mt-1 text-xs text-slate-500">version v{editing.version}</div>
+                <div className="mt-1 text-xs text-stone-500">version v{editing.version}</div>
               </div>
 
-              <div className="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
-                <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">
+              <div className="rounded-lg border border-stone-800 bg-stone-950/40 p-4">
+                <div className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">
                   Submission gate
                 </div>
                 {editingBlockers.length === 0 ? (
-                  <div className="flex items-center gap-2 text-sm text-emerald-300">
+                  <div className="flex items-center gap-2 text-sm text-green-300">
                     <span>✓</span> All checks pass — package is submission-ready.
                   </div>
                 ) : (
@@ -350,7 +350,7 @@ export default function RegistryPage() {
               </div>
 
               {editing.registered_reference && (
-                <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-200">
+                <div className="rounded-lg border border-green-500/30 bg-green-500/10 p-4 text-sm text-green-200">
                   Registered reference:{' '}
                   <span className="font-mono">{editing.registered_reference}</span>
                 </div>
@@ -359,12 +359,12 @@ export default function RegistryPage() {
 
             {/* fields */}
             <div className="space-y-3 md:order-1">
-              <div className="text-xs font-medium uppercase tracking-wide text-slate-500">
+              <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
                 Annex VIII fields
               </div>
               {REGISTRY_FIELDS.map((f) => (
                 <div key={f.key}>
-                  <label className="mb-1 block text-xs font-medium text-slate-400">{f.label}</label>
+                  <label className="mb-1 block text-xs font-medium text-stone-400">{f.label}</label>
                   {f.multiline ? (
                     <textarea
                       className={inputCls('min-h-[64px]')}

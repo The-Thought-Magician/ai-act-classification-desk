@@ -7,12 +7,12 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const tones: Record<Tone, string> = {
-  indigo: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30',
+  indigo: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
   amber: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
-  green: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+  green: 'bg-green-500/15 text-green-300 border-green-500/30',
   red: 'bg-red-500/15 text-red-300 border-red-500/30',
-  slate: 'bg-slate-500/15 text-slate-300 border-slate-500/30',
-  blue: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
+  slate: 'bg-stone-500/15 text-stone-300 border-stone-500/30',
+  blue: 'bg-orange-500/15 text-orange-300 border-orange-500/30',
 }
 
 // Maps an EU AI Act risk tier to a tone for consistent coloring.

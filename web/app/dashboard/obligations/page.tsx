@@ -29,7 +29,7 @@ function isOverdue(o: Any) {
 }
 
 const inputCls =
-  'rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500'
+  'rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500'
 
 export default function ObligationsPage() {
   const [loading, setLoading] = useState(true)
@@ -136,8 +136,8 @@ export default function ObligationsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-100">Obligations registry</h1>
-        <p className="mt-1 text-sm text-slate-400">Track every EU AI Act obligation across your portfolio. Update status inline or in bulk.</p>
+        <h1 className="text-2xl font-bold text-stone-100">Obligations registry</h1>
+        <p className="mt-1 text-sm text-stone-400">Track every EU AI Act obligation across your portfolio. Update status inline or in bulk.</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -151,29 +151,29 @@ export default function ObligationsPage() {
       <Card>
         <CardBody className="flex flex-wrap items-end gap-3">
           <label className="flex flex-col gap-1">
-            <span className="text-xs uppercase tracking-wide text-slate-500">Search</span>
+            <span className="text-xs uppercase tracking-wide text-stone-500">Search</span>
             <input className={`${inputCls} w-56`} placeholder="title, article, owner..." value={q} onChange={(e) => setQ(e.target.value)} />
           </label>
           <label className="flex flex-col gap-1">
-            <span className="text-xs uppercase tracking-wide text-slate-500">Tier</span>
+            <span className="text-xs uppercase tracking-wide text-stone-500">Tier</span>
             <select className={inputCls} value={tier} onChange={(e) => setTier(e.target.value)}>
               <option value="">All tiers</option>
               {TIERS.map((t) => <option key={t} value={t}>{t}</option>)}
             </select>
           </label>
           <label className="flex flex-col gap-1">
-            <span className="text-xs uppercase tracking-wide text-slate-500">Status</span>
+            <span className="text-xs uppercase tracking-wide text-stone-500">Status</span>
             <select className={inputCls} value={status} onChange={(e) => setStatus(e.target.value)}>
               <option value="">All statuses</option>
               {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </label>
           <label className="flex flex-col gap-1">
-            <span className="text-xs uppercase tracking-wide text-slate-500">Article</span>
+            <span className="text-xs uppercase tracking-wide text-stone-500">Article</span>
             <input className={`${inputCls} w-32`} placeholder="Art. 9" value={article} onChange={(e) => setArticle(e.target.value)} />
           </label>
           <label className="flex flex-col gap-1">
-            <span className="text-xs uppercase tracking-wide text-slate-500">Owner</span>
+            <span className="text-xs uppercase tracking-wide text-stone-500">Owner</span>
             <input className={`${inputCls} w-40`} placeholder="owner" value={owner} onChange={(e) => setOwner(e.target.value)} />
           </label>
           <Button variant="ghost" onClick={resetFilters}>Reset</Button>
@@ -182,10 +182,10 @@ export default function ObligationsPage() {
 
       {/* Bulk bar */}
       {selected.size > 0 && (
-        <div className="flex flex-wrap items-center gap-3 rounded-xl border border-indigo-500/30 bg-indigo-500/10 px-4 py-3">
-          <span className="text-sm text-indigo-200">{selected.size} selected</span>
-          <span className="text-slate-600">·</span>
-          <span className="text-sm text-slate-300">Set status to</span>
+        <div className="flex flex-wrap items-center gap-3 rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3">
+          <span className="text-sm text-rose-200">{selected.size} selected</span>
+          <span className="text-stone-600">·</span>
+          <span className="text-sm text-stone-300">Set status to</span>
           <select className={inputCls} value={bulkStatus} onChange={(e) => setBulkStatus(e.target.value)}>
             {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
@@ -214,7 +214,7 @@ export default function ObligationsPage() {
           <THead>
             <TR>
               <TH className="w-10">
-                <input type="checkbox" className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-indigo-500 focus:ring-indigo-500" checked={allVisibleSelected} onChange={toggleAll} />
+                <input type="checkbox" className="h-4 w-4 rounded border-stone-700 bg-stone-950 text-rose-500 focus:ring-rose-500" checked={allVisibleSelected} onChange={toggleAll} />
               </TH>
               <TH>Obligation</TH>
               <TH>Tier</TH>
@@ -226,21 +226,21 @@ export default function ObligationsPage() {
           </THead>
           <TBody>
             {filtered.map((o) => (
-              <TR key={o.id} className={selected.has(o.id) ? 'bg-indigo-500/5' : ''}>
+              <TR key={o.id} className={selected.has(o.id) ? 'bg-rose-500/5' : ''}>
                 <TD>
-                  <input type="checkbox" className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-indigo-500 focus:ring-indigo-500" checked={selected.has(o.id)} onChange={() => toggleOne(o.id)} />
+                  <input type="checkbox" className="h-4 w-4 rounded border-stone-700 bg-stone-950 text-rose-500 focus:ring-rose-500" checked={selected.has(o.id)} onChange={() => toggleOne(o.id)} />
                 </TD>
                 <TD>
                   <div className="flex items-center gap-2">
                     {o.system_id && (
-                      <Link href={`/dashboard/systems/${o.system_id}`} className="font-medium text-slate-100 hover:text-indigo-300">{o.title}</Link>
+                      <Link href={`/dashboard/systems/${o.system_id}`} className="font-medium text-stone-100 hover:text-rose-300">{o.title}</Link>
                     )}
-                    {!o.system_id && <span className="font-medium text-slate-100">{o.title}</span>}
+                    {!o.system_id && <span className="font-medium text-stone-100">{o.title}</span>}
                   </div>
-                  {o.applicability_reason && <div className="text-xs text-slate-500">{o.applicability_reason}</div>}
+                  {o.applicability_reason && <div className="text-xs text-stone-500">{o.applicability_reason}</div>}
                 </TD>
                 <TD><Badge tone={tierTone(o.tier)}>{o.tier || '—'}</Badge></TD>
-                <TD className="text-xs text-slate-400">{o.article_ref || '—'}</TD>
+                <TD className="text-xs text-stone-400">{o.article_ref || '—'}</TD>
                 <TD>
                   <input
                     className={`${inputCls} w-32 py-1`}

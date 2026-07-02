@@ -204,8 +204,8 @@ export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-5xl space-y-8 px-1 py-2">
       <header className="space-y-1">
-        <h1 className="text-2xl font-bold text-slate-100">Settings</h1>
-        <p className="text-sm text-slate-400">
+        <h1 className="text-2xl font-bold text-stone-100">Settings</h1>
+        <p className="text-sm text-stone-400">
           Workspace defaults, notification preferences, billing, and demo data for your AI Act compliance desk.
         </p>
       </header>
@@ -216,7 +216,7 @@ export default function SettingsPage() {
         </div>
       )}
       {resetDone && (
-        <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
+        <div className="rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
           Demo data has been re-seeded for your account.
         </div>
       )}
@@ -224,8 +224,8 @@ export default function SettingsPage() {
       {/* Organisation + defaults */}
       <Card>
         <CardHeader>
-          <h2 className="text-base font-semibold text-slate-100">Workspace</h2>
-          <p className="mt-0.5 text-xs text-slate-400">
+          <h2 className="text-base font-semibold text-stone-100">Workspace</h2>
+          <p className="mt-0.5 text-xs text-stone-400">
             These defaults pre-fill new system intake forms and classification jurisdiction scope.
           </p>
         </CardHeader>
@@ -233,30 +233,30 @@ export default function SettingsPage() {
           <form onSubmit={save} className="space-y-5">
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="block">
-                <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Organisation name</span>
+                <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-stone-500">Organisation name</span>
                 <input
                   value={orgName}
                   onChange={(e) => setOrgName(e.target.value)}
                   placeholder="Acme AI GmbH"
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
                 />
               </label>
               <label className="block">
-                <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Compliance contact email</span>
+                <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-stone-500">Compliance contact email</span>
                 <input
                   type="email"
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
                   placeholder="compliance@acme.eu"
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
                 />
               </label>
               <label className="block">
-                <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Default jurisdiction</span>
+                <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-stone-500">Default jurisdiction</span>
                 <select
                   value={jurisdiction}
                   onChange={(e) => setJurisdiction(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
                 >
                   <option value="">Select jurisdiction…</option>
                   {JURISDICTIONS.map((j) => (
@@ -265,11 +265,11 @@ export default function SettingsPage() {
                 </select>
               </label>
               <label className="block">
-                <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Default operator role</span>
+                <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-stone-500">Default operator role</span>
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
                 >
                   <option value="">Select role…</option>
                   {ROLES.map((r) => (
@@ -280,7 +280,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <span className="mb-2 block text-xs font-medium uppercase tracking-wide text-slate-500">Notification preferences</span>
+              <span className="mb-2 block text-xs font-medium uppercase tracking-wide text-stone-500">Notification preferences</span>
               <div className="grid gap-2 sm:grid-cols-2">
                 {PREF_LABELS.map((p) => (
                   <button
@@ -289,20 +289,20 @@ export default function SettingsPage() {
                     onClick={() => setPrefs((prev) => ({ ...prev, [p.key]: !prev[p.key] }))}
                     className={`flex items-start gap-3 rounded-lg border px-3 py-2.5 text-left transition-colors ${
                       prefs[p.key]
-                        ? 'border-indigo-500/50 bg-indigo-500/10'
-                        : 'border-slate-800 bg-slate-950/40 hover:border-slate-700'
+                        ? 'border-rose-500/50 bg-rose-500/10'
+                        : 'border-stone-800 bg-stone-950/40 hover:border-stone-700'
                     }`}
                   >
                     <span
                       className={`mt-0.5 flex h-5 w-9 shrink-0 items-center rounded-full p-0.5 transition-colors ${
-                        prefs[p.key] ? 'bg-indigo-500' : 'bg-slate-700'
+                        prefs[p.key] ? 'bg-rose-500' : 'bg-stone-700'
                       }`}
                     >
                       <span className={`h-4 w-4 rounded-full bg-white transition-transform ${prefs[p.key] ? 'translate-x-4' : ''}`} />
                     </span>
                     <span>
-                      <span className="block text-sm font-medium text-slate-200">{p.label}</span>
-                      <span className="block text-xs text-slate-500">{p.hint}</span>
+                      <span className="block text-sm font-medium text-stone-200">{p.label}</span>
+                      <span className="block text-xs text-stone-500">{p.hint}</span>
                     </span>
                   </button>
                 ))}
@@ -314,7 +314,7 @@ export default function SettingsPage() {
                 {saving ? 'Saving…' : 'Save settings'}
               </Button>
               {savedAt && !saving && (
-                <span className="text-xs text-emerald-400">Saved</span>
+                <span className="text-xs text-green-400">Saved</span>
               )}
             </div>
           </form>
@@ -325,8 +325,8 @@ export default function SettingsPage() {
       <Card>
         <CardHeader className="flex items-center justify-between">
           <div>
-            <h2 className="text-base font-semibold text-slate-100">Billing</h2>
-            <p className="mt-0.5 text-xs text-slate-400">Current subscription and plan for this workspace.</p>
+            <h2 className="text-base font-semibold text-stone-100">Billing</h2>
+            <p className="mt-0.5 text-xs text-stone-400">Current subscription and plan for this workspace.</p>
           </div>
           <Badge tone={isPro ? 'indigo' : 'slate'}>{isPro ? 'Pro' : 'Free'}</Badge>
         </CardHeader>
@@ -357,7 +357,7 @@ export default function SettingsPage() {
           )}
 
           {!billing?.stripeEnabled && (
-            <div className="rounded-lg border border-slate-800 bg-slate-950/40 px-4 py-2.5 text-xs text-slate-400">
+            <div className="rounded-lg border border-stone-800 bg-stone-950/40 px-4 py-2.5 text-xs text-stone-400">
               Stripe is not enabled in this environment. Upgrade and portal actions are disabled.
             </div>
           )}
@@ -372,7 +372,7 @@ export default function SettingsPage() {
                 {billingBusy ? 'Working…' : 'Manage billing'}
               </Button>
             )}
-            <span className="text-xs text-slate-500">
+            <span className="text-xs text-stone-500">
               {isPro ? 'Manage payment method and invoices via the Stripe portal.' : 'Pro unlocks unlimited systems, webhooks, and API keys.'}
             </span>
           </div>
@@ -383,7 +383,7 @@ export default function SettingsPage() {
       <Card className="border-amber-500/30">
         <CardHeader className="border-amber-500/20">
           <h2 className="text-base font-semibold text-amber-300">Demo data</h2>
-          <p className="mt-0.5 text-xs text-slate-400">
+          <p className="mt-0.5 text-xs text-stone-400">
             Re-seed your account with the sample AI system register. This replaces your current data with the demo set.
           </p>
         </CardHeader>
@@ -392,7 +392,7 @@ export default function SettingsPage() {
             <Button variant="danger" onClick={() => setResetOpen(true)} disabled={resetting}>
               Reset demo data
             </Button>
-            <span className="text-xs text-slate-500">This action cannot be undone.</span>
+            <span className="text-xs text-stone-500">This action cannot be undone.</span>
           </div>
         </CardBody>
       </Card>
@@ -410,7 +410,7 @@ export default function SettingsPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-300">
           This will remove your current systems, classifications, obligations, evidence, and notices, then re-seed the
           demo register. Continue?
         </p>

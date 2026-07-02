@@ -141,8 +141,8 @@ export default function AuditPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-100">Audit Log</h1>
-        <p className="mt-1 text-sm text-slate-400">
+        <h1 className="text-2xl font-bold text-stone-100">Audit Log</h1>
+        <p className="mt-1 text-sm text-stone-400">
           Immutable record of every action across your AI systems, classifications, and compliance artifacts.
         </p>
       </div>
@@ -167,12 +167,12 @@ export default function AuditPage() {
       {spark.days.length > 1 && (
         <Card>
           <CardBody>
-            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Activity (last {spark.days.length} active days)</div>
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Activity (last {spark.days.length} active days)</div>
             <div className="flex items-end gap-1" style={{ height: 64 }}>
               {spark.days.map(([day, count]) => (
                 <div key={day} className="group flex flex-1 flex-col items-center justify-end" title={`${day}: ${count}`}>
                   <div
-                    className="w-full rounded-t bg-indigo-500/70 transition-colors group-hover:bg-amber-400"
+                    className="w-full rounded-t bg-rose-500/70 transition-colors group-hover:bg-amber-400"
                     style={{ height: `${(count / spark.max) * 100}%`, minHeight: 2 }}
                   />
                 </div>
@@ -186,20 +186,20 @@ export default function AuditPage() {
         <CardHeader>
           <div className="flex flex-wrap items-end gap-3">
             <div className="min-w-[160px] flex-1">
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Search</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Search</label>
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Filter by summary, entity, id…"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Action</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Action</label>
               <select
                 value={action}
                 onChange={(e) => setAction(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
               >
                 <option value="">All actions</option>
                 {actionOptions.map((a) => (
@@ -208,11 +208,11 @@ export default function AuditPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Entity</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Entity</label>
               <select
                 value={entityType}
                 onChange={(e) => setEntityType(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
               >
                 <option value="">All entities</option>
                 {entityOptions.map((t) => (
@@ -221,12 +221,12 @@ export default function AuditPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Date</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Date</label>
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 focus:border-indigo-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 focus:border-rose-500 focus:outline-none"
               />
             </div>
             {hasFilters && (
@@ -254,8 +254,8 @@ export default function AuditPage() {
               {grouped.map(([day, rows]) => (
                 <div key={day}>
                   <div className="mb-2 flex items-center gap-3">
-                    <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">{day}</span>
-                    <span className="h-px flex-1 bg-slate-800" />
+                    <span className="text-xs font-semibold uppercase tracking-wide text-stone-500">{day}</span>
+                    <span className="h-px flex-1 bg-stone-800" />
                     <Badge tone="slate">{rows.length}</Badge>
                   </div>
                   <Table>
@@ -271,7 +271,7 @@ export default function AuditPage() {
                     <TBody>
                       {rows.map((e) => (
                         <TR key={e.id}>
-                          <TD className="whitespace-nowrap text-xs text-slate-400">
+                          <TD className="whitespace-nowrap text-xs text-stone-400">
                             {new Date(e.created_at).toLocaleTimeString()}
                           </TD>
                           <TD>
@@ -279,16 +279,16 @@ export default function AuditPage() {
                           </TD>
                           <TD>
                             <div className="text-xs">
-                              <span className="text-slate-200">{e.entity_type}</span>
+                              <span className="text-stone-200">{e.entity_type}</span>
                               {e.entity_id && (
-                                <span className="ml-1 font-mono text-[10px] text-slate-500">
+                                <span className="ml-1 font-mono text-[10px] text-stone-500">
                                   {e.entity_id.slice(0, 8)}
                                 </span>
                               )}
                             </div>
                           </TD>
                           <TD className="max-w-[360px]">
-                            <span className="block truncate text-slate-300" title={e.summary || ''}>
+                            <span className="block truncate text-stone-300" title={e.summary || ''}>
                               {e.summary || '—'}
                             </span>
                           </TD>
@@ -328,13 +328,13 @@ export default function AuditPage() {
             </div>
             {detail.summary && (
               <div>
-                <div className="text-xs font-medium uppercase tracking-wide text-slate-500">Summary</div>
-                <p className="mt-1 text-slate-200">{detail.summary}</p>
+                <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Summary</div>
+                <p className="mt-1 text-stone-200">{detail.summary}</p>
               </div>
             )}
             <div>
-              <div className="text-xs font-medium uppercase tracking-wide text-slate-500">Metadata</div>
-              <pre className="mt-1 max-h-72 overflow-auto rounded-lg border border-slate-800 bg-slate-950/70 px-3 py-2 text-xs text-slate-300">
+              <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Metadata</div>
+              <pre className="mt-1 max-h-72 overflow-auto rounded-lg border border-stone-800 bg-stone-950/70 px-3 py-2 text-xs text-stone-300">
                 {detail.meta == null ? 'null' : JSON.stringify(detail.meta, null, 2)}
               </pre>
             </div>
@@ -348,8 +348,8 @@ export default function AuditPage() {
 function Field({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div>
-      <div className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</div>
-      <div className="mt-1 text-slate-200">{value}</div>
+      <div className="text-xs font-medium uppercase tracking-wide text-stone-500">{label}</div>
+      <div className="mt-1 text-stone-200">{value}</div>
     </div>
   )
 }
